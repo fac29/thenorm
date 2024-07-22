@@ -1,4 +1,4 @@
-## Getting Started
+## The Norm Tech for Better Project
 
 First, run the development server:
 
