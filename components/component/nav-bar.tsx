@@ -11,37 +11,38 @@ export function NavBar() {
 					height={100}
 					alt="The Norm Logo"
 				/>
-				<span className="sr-only">Acme Inc</span>
 			</Link>
-			<nav className="hidden md:flex md:gap-6">
-				<Link
-					href="#"
-					className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-					prefetch={false}
-				>
-					About
-				</Link>
-				<Link
-					href="#"
-					className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-					prefetch={false}
-				>
-					Account
-				</Link>
-				<Link
-					href="#"
-					className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-					prefetch={false}
-				>
-					Chat
-				</Link>
-				<Link
-					href="#"
-					className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-					prefetch={false}
-				>
-					Login
-				</Link>
+			<nav className="bg-white p-4">
+				<div className="flex">
+					<Link
+						href="#"
+						className="bg-orange-200 text-white px-4 py-2 rounded-l-lg hover:bg-black-600 hover:bg-orange-300"
+						prefetch={false}
+					>
+						About
+					</Link>
+					<Link
+						href="#"
+						className="bg-orange-200 text-white px-4 py-2 hover:bg-black-600 hover:bg-orange-300"
+						prefetch={false}
+					>
+						Account
+					</Link>
+					<Link
+						href="#"
+						className="bg-orange-200 text-white px-4 py-2 hover:bg-black-600 hover:bg-orange-300"
+						prefetch={false}
+					>
+						Chat
+					</Link>
+					<Link
+						href="#"
+						className="bg-orange-200 text-white px-4 py-2 rounded-r-lg hover:bg-black-600 hover:bg-orange-300"
+						prefetch={false}
+					>
+						Login
+					</Link>
+				</div>
 			</nav>
 		</header>
 	);
