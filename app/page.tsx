@@ -16,7 +16,7 @@ export default function Home() {
 				<ModeToggle />
 			</div>
 			<div>
-				<Button variant='outline'>Hello</Button>
+				<Button variant='default'>Hello</Button>
 			</div>
 			<div>
 				<Accordion type='single' collapsible>
