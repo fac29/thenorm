@@ -24,7 +24,13 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					{children}
+					<header>
+						<p>nav will go here</p>
+					</header>
+					<main>{children}</main>
+					<footer>
+						<p>footer will go here</p>
+					</footer>
 				</ThemeProvider>
 			</body>
 		</html>
