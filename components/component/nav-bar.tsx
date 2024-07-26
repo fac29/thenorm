@@ -16,7 +16,7 @@ export function NavBar() {
 			<nav className="p-4">
 				<div className="flex items-center">
 					<Link
-						href="/about"
+						href="/chat"
 						className="bg-white text-black px-8 py-4 rounded-lg mr-8 hover:bg-[#e6e6e6] animate-bounce"
 						prefetch={false}
 					>
@@ -26,7 +26,7 @@ export function NavBar() {
 					</Link>
 					<div className="flex divide-x">
 						<Link
-							href="/account"
+							href="/about"
 							className="bg-white text-black px-8 py-4 rounded-l-lg hover:bg-[#e6e6e6]"
 							prefetch={false}
 						>
