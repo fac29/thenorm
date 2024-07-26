@@ -34,7 +34,7 @@ export default function About() {
 					<Button>Learn More</Button>
 				</CardContent>
 			</Card>
-			<Card className="mb-8 bg-transparent shadow-none">
+			<Card className="mb-8">
 				<CardHeader>
 					<CardTitle>State of Mental Health</CardTitle>
 				</CardHeader>
