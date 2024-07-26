@@ -1,14 +1,16 @@
-import React from 'react';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import { ThemeProvider } from '@/components/themeprovider';
+import React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/components/themeprovider";
+import { NavBar } from "@/components/component/nav-bar";
+import { Footer } from "@/components/footer";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: 'theNorm',
-	description: 'Your own personal Jo in your pocket',
+	title: "theNorm",
+	description: "Your own personal Jo in your pocket",
 };
 
 export default function RootLayout({
@@ -17,20 +19,22 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en'>
-			<body className={inter.className}>
+		<html lang="en">
+			<body
+				className={`${inter.className} bg-gradient-norm bg-cover bg-center`}
+			>
 				<ThemeProvider
-					attribute='class'
-					defaultTheme='system'
+					attribute="class"
+					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
 					<header>
-						<p>nav will go here</p>
+						<NavBar />
 					</header>
 					<main>{children}</main>
 					<footer>
-						<p>footer will go here</p>
+						<Footer />
 					</footer>
 				</ThemeProvider>
 			</body>
