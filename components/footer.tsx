@@ -3,11 +3,11 @@ import Image from "next/image";
 
 export function Footer() {
 	return (
-		<footer className="bg-white text-black py-8">
+		<footer className="bg-white text-black py-8 bg-card/25">
 			<div className="container mx-auto px-4">
 				<div className="flex flex-wrap justify-between">
 					<div className="w-full md:w-1/4 mb-6 md:mb-0">
-						<h3 className="text-xl font-bold mb-4">The Norm</h3>
+						<h3 className="text-xl font-bold mb-4">the norm</h3>
 						<p className="text-sm">Mental health empowerment for all.</p>
 					</div>
 					<div className="w-full md:w-1/4 mb-6 md:mb-0">
@@ -34,7 +34,7 @@ export function Footer() {
 					<div className="w-full md:w-1/4">
 						<h4 className="text-lg font-semibold mb-4">Follow Us</h4>
 						<div className="flex space-x-4">
-							<a href="#" className="hover:text-gray-300">
+							<a href="#" className="hover:text-purple-600">
 								<span className="sr-only">Facebook</span>
 								<svg
 									className="h-6 w-6"
@@ -49,7 +49,7 @@ export function Footer() {
 									/>
 								</svg>
 							</a>
-							<a href="#" className="hover:text-gray-300">
+							<a href="#" className="hover:text-purple-600">
 								<span className="sr-only">Twitter</span>
 								<svg
 									className="h-6 w-6"
@@ -65,7 +65,7 @@ export function Footer() {
 				</div>
 				<div className="mt-8 border-t border-gray-700 pt-8 text-sm text-center">
 					<p>
-						&copy; {new Date().getFullYear()} The Norm. All rights reserved.
+						&copy; {new Date().getFullYear()} the norm. All rights reserved.
 					</p>
 				</div>
 			</div>
