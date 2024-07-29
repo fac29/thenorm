@@ -34,7 +34,7 @@ export function Footer() {
 					<div className="w-full md:w-1/4">
 						<h4 className="text-lg font-semibold mb-4">Follow Us</h4>
 						<div className="flex space-x-4">
-							<a href="#" className="hover:text-gray-300">
+							<a href="#" className="hover:text-purple-600">
 								<span className="sr-only">Facebook</span>
 								<svg
 									className="h-6 w-6"
@@ -49,7 +49,7 @@ export function Footer() {
 									/>
 								</svg>
 							</a>
-							<a href="#" className="hover:text-gray-300">
+							<a href="#" className="hover:text-purple-600">
 								<span className="sr-only">Twitter</span>
 								<svg
 									className="h-6 w-6"
