@@ -7,7 +7,7 @@ export function Footer() {
 			<div className="container mx-auto px-4">
 				<div className="flex flex-wrap justify-between">
 					<div className="w-full md:w-1/4 mb-6 md:mb-0">
-						<h3 className="text-xl font-bold mb-4">The norm</h3>
+						<h3 className="text-xl font-bold mb-4">the norm</h3>
 						<p className="text-sm">Mental health empowerment for all.</p>
 					</div>
 					<div className="w-full md:w-1/4 mb-6 md:mb-0">
@@ -65,7 +65,7 @@ export function Footer() {
 				</div>
 				<div className="mt-8 border-t border-gray-700 pt-8 text-sm text-center">
 					<p>
-						&copy; {new Date().getFullYear()} The norm. All rights reserved.
+						&copy; {new Date().getFullYear()} the norm. All rights reserved.
 					</p>
 				</div>
 			</div>
