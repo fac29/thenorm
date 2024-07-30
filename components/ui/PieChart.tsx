@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import TheNormLogo from "../../public/thenorm-centre-edit.png";
+import TheNormOutside from "../../public/The-Norm_Wheel_Outside1.png";
 
 interface PieChartData {
 	text: string;
@@ -43,6 +45,7 @@ const PieChart: React.FC<PieChartProps> = ({
 
 	const drawChart = () => {
 		const radius = Math.min(width, height) / 2;
+		// const labelRadius = radius * 1.1;
 
 		d3.select(svgRef.current).selectAll("*").remove();
 
@@ -60,8 +63,8 @@ const PieChart: React.FC<PieChartProps> = ({
 
 		const arc = d3
 			.arc<d3.PieArcDatum<PieChartData>>()
-			.innerRadius(0)
-			.outerRadius(radius);
+			.innerRadius(radius * 0.3) // Adjust as needed
+			.outerRadius(radius * 0.9);
 
 		// Ensure we always have 18 segments
 		const paddedData = [
@@ -104,6 +107,24 @@ const PieChart: React.FC<PieChartProps> = ({
 			.style("text-anchor", "middle")
 			.style("pointer-events", "none")
 			.text((d) => d.data.text);
+
+		const imageSize = radius * 0.6; // Adjust this value to change the image size
+		svg
+			.append("image")
+			.attr("xlink:href", TheNormLogo.src)
+			.attr("x", -imageSize / 2)
+			.attr("y", -imageSize / 2)
+			.attr("width", imageSize)
+			.attr("height", imageSize);
+
+		const outsideImageSize = radius * 2; // Adjust this value as needed
+		svg
+			.append("image")
+			.attr("xlink:href", TheNormOutside.src)
+			.attr("x", -outsideImageSize / 2)
+			.attr("y", -outsideImageSize / 2)
+			.attr("width", outsideImageSize)
+			.attr("height", outsideImageSize);
 	};
 
 	return <svg ref={svgRef}></svg>;
