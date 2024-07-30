@@ -1,15 +1,18 @@
+"use client";
+
 import React from "react";
 import type { Metadata } from "next";
+import ChatBot from "@/components/component/chatbot";
 
-export const metadata: Metadata = {
-  title: "theNorm",
-  description: "Your own personal Jo in your pocket",
-};
+// export const metadata: Metadata = {
+// 	title: "theNorm",
+// 	description: "Your own personal Jo in your pocket",
+// };
 
 export default function Chat() {
-  return (
-    <div>
-      <h1>this is the chat page/component</h1>
-    </div>
-  );
+	return (
+		<div>
+			<ChatBot />
+		</div>
+	);
 }
