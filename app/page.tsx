@@ -14,6 +14,7 @@ import PieChart from "@/components/ui/PieChart";
 export default function Home() {
 	interface PieChartData {
 		text: string;
+		match: string;
 		color: "red" | "orange" | "green";
 	}
 	const segmentNamesArr = [
@@ -36,15 +37,28 @@ export default function Home() {
 		"Senses: somewhat",
 		"Brain: well",
 	];
+
+	const determineColour = (match: string) => {
+		if (match === "well") {
+			return "green";
+		} else if (match === "somewhat") {
+			return "orange";
+		} else if (match === "not at all") {
+			return "red";
+		}
+	};
+
 	const pieData: PieChartData[] = Array(18)
 		.fill(null)
-		.map((_, i) => ({
-			text: `${segmentNamesArr[i]}`,
-			color: ["red", "orange", "green"][Math.floor(Math.random() * 3)] as
-				| "red"
-				| "orange"
-				| "green",
-		}));
+		.map((_, i) => {
+			const text = segmentNamesArr[i].split(":")[0];
+			const match = segmentNamesArr[i].split(":")[1].trimStart();
+			return {
+				text: text,
+				match: match,
+				color: determineColour(match) as "red" | "orange" | "green",
+			};
+		});
 
 	const handleSegmentClick = (index: number) => {
 		console.log(`Segment ${index + 1} clicked`);
@@ -62,8 +76,8 @@ export default function Home() {
 			<PieChart
 				data={pieData}
 				onSegmentClick={handleSegmentClick}
-				width={500}
-				height={500}
+				width={600}
+				height={600}
 			/>
 			{/* <img src="The-Norm_Wheel_WHITE 1.jpg" alt="" /> */}
 
