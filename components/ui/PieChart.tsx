@@ -30,7 +30,11 @@ const PieChart: React.FC<PieChartProps> = ({
 		if (svgRef.current) {
 			drawChart();
 		}
-	}, [data, width, height, hoveredIndex]);
+	}, [data, width, height]);
+
+	useEffect(() => {
+		updateHoveredSegment();
+	}, [hoveredIndex]);
 
 	const brightenColor = (color: string): string => {
 		const rgbColor = d3.rgb(color);
@@ -108,13 +112,11 @@ const PieChart: React.FC<PieChartProps> = ({
 
 		g.append("path")
 			.attr("d", arc)
-			.style("fill", (d, i) =>
-				i === hoveredIndex ? brightenColor(d.data.color) : d.data.color
-			)
+			.style("fill", (d) => d.data.color)
 			.style("stroke", "white")
 			.style("stroke-width", "1px")
 			.style("cursor", "pointer")
-			.style("transition", "fill 0.3s ease");
+			.style("transition", "fill 0.1s ease");
 
 		// Add text labels if needed
 		g.append("text")
@@ -130,6 +132,21 @@ const PieChart: React.FC<PieChartProps> = ({
 			.style("text-anchor", "middle")
 			.style("pointer-events", "none")
 			.text((d) => d.data.text);
+	};
+
+	const updateHoveredSegment = () => {
+		const radius = Math.min(width, height) / 2;
+		const arc = d3
+			.arc<d3.PieArcDatum<PieChartData>>()
+			.innerRadius(radius * 0.3)
+			.outerRadius(radius * 0.9);
+
+		d3.select(svgRef.current)
+			.selectAll<SVGPathElement, d3.PieArcDatum<PieChartData>>(".arc path")
+			.transition()
+			.style("fill", (d, i) =>
+				i === hoveredIndex ? brightenColor(d.data.color) : d.data.color
+			);
 	};
 
 	return <svg ref={svgRef}></svg>;
