@@ -128,7 +128,7 @@ const PieChart: React.FC<PieChartProps> = ({
 				return `translate(${x}, ${y}) ${rotate} ${flip}`;
 			})
 			.attr("dy", ".35em")
-			.style("font-size", "10px")
+			.style("font-size", "15px")
 			.style("text-anchor", "middle")
 			.style("pointer-events", "none")
 			.text((d) => d.data.text);
