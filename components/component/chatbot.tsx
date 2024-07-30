@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "../ui/button";
 
 interface Message {
 	text: string;
@@ -55,12 +56,19 @@ const ChatBot: React.FC = () => {
 						className="flex-1 border rounded-lg px-3 py-2"
 						placeholder="Type your message..."
 					/>
-					<button
+					<Button
+						variant="default"
 						onClick={handleSend}
 						className="bg-purple-500 text-white px-4 py-2 rounded-lg"
 					>
 						Send
-					</button>
+					</Button>
+					{/* <button
+						onClick={handleSend}
+						className="bg-purple-500 text-white px-4 py-2 rounded-lg"
+					>
+						Send
+					</button> */}
 				</div>
 			</div>
 		</div>
