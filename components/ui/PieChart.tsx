@@ -45,7 +45,6 @@ const PieChart: React.FC<PieChartProps> = ({
 
 	const drawChart = () => {
 		const radius = Math.min(width, height) / 2;
-		// const labelRadius = radius * 1.1;
 
 		d3.select(svgRef.current).selectAll("*").remove();
 
@@ -56,15 +55,38 @@ const PieChart: React.FC<PieChartProps> = ({
 			.append("g")
 			.attr("transform", `translate(${width / 2},${height / 2})`);
 
+		// Add TheNormOutside image
+		const outsideImageSize = radius * 2.08;
+		svg
+			.append("image")
+			.attr("xlink:href", TheNormOutside.src)
+			.attr("x", -outsideImageSize / 2)
+			.attr("y", -outsideImageSize / 2)
+			.attr("width", outsideImageSize)
+			.attr("height", outsideImageSize);
+
+		// Add center logo
+		const centerImageSize = radius * 0.6;
+		svg
+			.append("image")
+			.attr("xlink:href", TheNormLogo.src)
+			.attr("x", -centerImageSize / 2)
+			.attr("y", -centerImageSize / 2)
+			.attr("width", centerImageSize)
+			.attr("height", centerImageSize);
+
+		// Create a group for the pie chart
+		const pieGroup = svg.append("g");
+
+		const arc = d3
+			.arc<d3.PieArcDatum<PieChartData>>()
+			.innerRadius(radius * 0.3)
+			.outerRadius(radius * 0.9);
+
 		const pie = d3
 			.pie<PieChartData>()
 			.value(() => 1)
 			.sort(null);
-
-		const arc = d3
-			.arc<d3.PieArcDatum<PieChartData>>()
-			.innerRadius(radius * 0.3) // Adjust as needed
-			.outerRadius(radius * 0.9);
 
 		// Ensure we always have 18 segments
 		const paddedData = [
@@ -74,13 +96,12 @@ const PieChart: React.FC<PieChartProps> = ({
 
 		const segments = pie(paddedData);
 
-		const g = svg
+		const g = pieGroup
 			.selectAll(".arc")
 			.data(segments)
 			.enter()
 			.append("g")
 			.attr("class", "arc")
-			// .on('click', (event, d) => onSegmentClick(segments.indexOf(d)))
 			.on("mouseenter", (event, d) => setHoveredIndex(segments.indexOf(d)))
 			.on("mouseleave", () => setHoveredIndex(null));
 
@@ -89,11 +110,12 @@ const PieChart: React.FC<PieChartProps> = ({
 			.style("fill", (d, i) =>
 				i === hoveredIndex ? brightenColor(d.data.color) : d.data.color
 			)
-			.style("stroke", "white") // Border color
-			.style("stroke-width", "1px") // Border width
+			.style("stroke", "white")
+			.style("stroke-width", "1px")
 			.style("cursor", "pointer")
 			.style("transition", "fill 0.3s ease");
 
+		// Add text labels if needed
 		g.append("text")
 			.attr("transform", (d) => {
 				const [x, y] = arc.centroid(d);
@@ -107,27 +129,97 @@ const PieChart: React.FC<PieChartProps> = ({
 			.style("text-anchor", "middle")
 			.style("pointer-events", "none")
 			.text((d) => d.data.text);
-
-		const imageSize = radius * 0.6; // Adjust this value to change the image size
-		svg
-			.append("image")
-			.attr("xlink:href", TheNormLogo.src)
-			.attr("x", -imageSize / 2)
-			.attr("y", -imageSize / 2)
-			.attr("width", imageSize)
-			.attr("height", imageSize);
-
-		const outsideImageSize = radius * 2; // Adjust this value as needed
-		svg
-			.append("image")
-			.attr("xlink:href", TheNormOutside.src)
-			.attr("x", -outsideImageSize / 2)
-			.attr("y", -outsideImageSize / 2)
-			.attr("width", outsideImageSize)
-			.attr("height", outsideImageSize);
 	};
 
 	return <svg ref={svgRef}></svg>;
 };
 
 export default PieChart;
+
+// const drawChart = () => {
+// 	const radius = Math.min(width, height) / 2;
+
+// 	d3.select(svgRef.current).selectAll("*").remove();
+
+// 	const svg = d3
+// 		.select(svgRef.current)
+// 		.attr("width", width)
+// 		.attr("height", height)
+// 		.append("g")
+// 		.attr("transform", `translate(${width / 2},${height / 2})`);
+
+// 	// Add TheNormOutside image
+// 	const outsideImageSize = radius * 2;
+// 	svg
+// 		.append("image")
+// 		.attr("xlink:href", TheNormOutside.src)
+// 		.attr("x", -outsideImageSize / 2)
+// 		.attr("y", -outsideImageSize / 2)
+// 		.attr("width", outsideImageSize)
+// 		.attr("height", outsideImageSize);
+
+// 	// Add center logo
+// 	const centerImageSize = radius * 0.4;
+// 	svg
+// 		.append("image")
+// 		.attr("xlink:href", TheNormLogo.src)
+// 		.attr("x", -centerImageSize / 2)
+// 		.attr("y", -centerImageSize / 2)
+// 		.attr("width", centerImageSize)
+// 		.attr("height", centerImageSize);
+
+// 	// Create a group for the pie chart
+// 	const pieGroup = svg.append("g");
+
+// 	const arc = d3
+// 		.arc<d3.PieArcDatum<PieChartData>>()
+// 		.innerRadius(radius * 0.3)
+// 		.outerRadius(radius * 0.9);
+
+// 	const pie = d3
+// 		.pie<PieChartData>()
+// 		.value(() => 1)
+// 		.sort(null);
+
+// 	// Ensure we always have 18 segments
+// 	const paddedData = [
+// 		...data,
+// 		...Array(18 - data.length).fill({ text: "", color: "green" }),
+// 	].slice(0, 18);
+
+// 	const segments = pie(paddedData);
+
+// 	const g = pieGroup
+// 		.selectAll(".arc")
+// 		.data(segments)
+// 		.enter()
+// 		.append("g")
+// 		.attr("class", "arc")
+// 		.on("mouseenter", (event, d) => setHoveredIndex(segments.indexOf(d)))
+// 		.on("mouseleave", () => setHoveredIndex(null));
+
+// 	g.append("path")
+// 		.attr("d", arc)
+// 		.style("fill", (d, i) =>
+// 			i === hoveredIndex ? brightenColor(d.data.color) : d.data.color
+// 		)
+// 		.style("stroke", "white")
+// 		.style("stroke-width", "1px")
+// 		.style("cursor", "pointer")
+// 		.style("transition", "fill 0.3s ease");
+
+// 	// Add text labels if needed
+// 	g.append("text")
+// 		.attr("transform", (d) => {
+// 			const [x, y] = arc.centroid(d);
+// 			const angle = (d.startAngle + d.endAngle) / 2;
+// 			const rotate = `rotate(${(angle * 180) / Math.PI - 90})`;
+// 			const flip = angle > Math.PI ? `rotate(180)` : ``;
+// 			return `translate(${x}, ${y}) ${rotate} ${flip}`;
+// 		})
+// 		.attr("dy", ".35em")
+// 		.style("font-size", "10px")
+// 		.style("text-anchor", "middle")
+// 		.style("pointer-events", "none")
+// 		.text((d) => d.data.text);
+// };
