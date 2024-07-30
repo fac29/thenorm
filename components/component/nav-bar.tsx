@@ -1,5 +1,4 @@
 import Link from "next/link";
-// import { Logo } from "../ui/logo";
 import Image from "next/image";
 
 export function NavBar() {
