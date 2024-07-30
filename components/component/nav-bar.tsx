@@ -1,12 +1,17 @@
 import Link from "next/link";
-import { Logo } from "../ui/logo";
 import Image from "next/image";
 
 export function NavBar() {
 	return (
 		<header className="flex h-32 items-center justify-between px-4 md:px-6">
 			<Link href="/" className="flex items-center gap-2" prefetch={false}>
-				<Logo />
+				<Image
+					// className="hover:bg-[#e6e6e6]"
+					src="/The-Norm_Logo_Strapline_CHARCOAL_1.svg"
+					width={200}
+					height={200}
+					alt="The Norm Logo"
+				/>
 			</Link>
 			<nav className="p-4">
 				<div className="flex items-center">
