@@ -36,7 +36,7 @@ const ChatBot: React.FC = () => {
 					>
 						<div
 							className={`rounded-lg p-2 max-w-xs ${
-								message.user ? "bg-blue-500 text-white" : "bg-gray-200"
+								message.user ? "bg-purple-500 text-white" : "bg-gray-200"
 							}`}
 						>
 							{message.text}
