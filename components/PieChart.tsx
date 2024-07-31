@@ -29,25 +29,46 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 	const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
 	const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
 
+	// const segmentNamesArr = [
+	// 	"Identify: somewhat",
+	// 	"Lifespan: somewhat",
+	// 	"Community: not at all",
+	// 	"Passions: somewhat",
+	// 	"Structure: somewhat",
+	// 	"Pressure points: somewhat",
+	// 	"Development: well",
+	// 	"Support: somewhat",
+	// 	"The Barrel: somewhat",
+	// 	"Transition Management: well",
+	// 	"Strengths: well",
+	// 	"Balance: somewhat",
+	// 	"Energy flow: not at all",
+	// 	"Emotions: not at all",
+	// 	"Gut health: somewhat",
+	// 	"Body: not at all",
+	// 	"Senses: somewhat",
+	// 	"Brain: well",
+	// ];
+
 	const segmentNamesArr = [
-		"Identify: somewhat",
-		"Lifespan: somewhat",
-		"Community: not at all",
-		"Passions: somewhat",
-		"Structure: somewhat",
-		"Pressure points: somewhat",
-		"Development: well",
-		"Support: somewhat",
-		"The Barrel: somewhat",
-		"Transition Management: well",
-		"Strengths: well",
-		"Balance: somewhat",
-		"Energy flow: not at all",
-		"Emotions: not at all",
-		"Gut health: somewhat",
-		"Body: not at all",
-		"Senses: somewhat",
-		"Brain: well",
+		"Identify",
+		"Lifespan",
+		"Community",
+		"Passions",
+		"Structure",
+		"Pressure points",
+		"Development",
+		"Support",
+		"The Barrel",
+		"Transition Management",
+		"Strengths",
+		"Balance",
+		"Energy flow",
+		"Emotions",
+		"Gut health",
+		"Body",
+		"Senses",
+		"Brain",
 	];
 
 	const determineColour = (match: string) => {
@@ -57,6 +78,8 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 			return "orange";
 		} else if (match === "not at all") {
 			return "red";
+		} else if (match === "") {
+			return "white";
 		}
 	};
 
@@ -64,7 +87,10 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 		.fill(null)
 		.map((_, i) => {
 			const text = segmentNamesArr[i].split(":")[0];
-			const match = segmentNamesArr[i].split(":")[1].trimStart();
+			const match =
+				segmentNamesArr[i].indexOf(":") === -1
+					? ""
+					: segmentNamesArr[i].split(":")[1].trimStart();
 			return {
 				text: text,
 				match: match,
@@ -159,7 +185,7 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 		g.append("path")
 			.attr("d", arc)
 			.style("fill", (d) => d.data.color)
-			.style("stroke", "white")
+			.style("stroke", "black")
 			.style("stroke-width", "1px")
 			.style("cursor", "pointer")
 			.style("transition", "fill 0.1s ease");
