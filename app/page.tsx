@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 
 import PieChart from "@/components/ui/PieChart";
+
 //import Image from 'next/image';
 
 export default function Home() {
@@ -60,10 +61,6 @@ export default function Home() {
 			};
 		});
 
-	const handleSegmentClick = (index: number) => {
-		console.log(`Segment ${index + 1} clicked`);
-	};
-
 	return (
 		<div className="flex min-h-screen flex-col items-center justify-between">
 			<img
@@ -73,12 +70,7 @@ export default function Home() {
 			/>
 			<h1 className="text-3xl font-bold mb-8 text-gray-800">the norm</h1>
 			<h2>find and nourish yours now</h2>
-			<PieChart
-				data={pieData}
-				onSegmentClick={handleSegmentClick}
-				width={600}
-				height={600}
-			/>
+			<PieChart data={pieData} width={600} height={600} />
 			{/* <img src="The-Norm_Wheel_WHITE 1.jpg" alt="" /> */}
 
 			{/* <div>
