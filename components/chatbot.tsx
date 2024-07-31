@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Button } from "./ui/button";
 
 interface Message {
@@ -6,24 +6,53 @@ interface Message {
 	user: boolean;
 }
 
-const ChatBot: React.FC = () => {
-	const [messages, setMessages] = useState<Message[]>([]);
-	const [input, setInput] = useState<string>("");
+const ChatComponent: React.FC = () => {
+	const [messages, setMessages] = React.useState<Message[]>([]);
+	const [input, setInput] = React.useState<string>("");
+	const [isLoading, setIsLoading] = React.useState(false);
 
-	const handleSend = (): void => {
+	const handleSend = async (): Promise<void> => {
 		if (input.trim()) {
-			// Add user message
-			setMessages([...messages, { text: input, user: true }]);
-
-			// Simulate AI response (replace this with actual AI processing)
-			setTimeout(() => {
-				setMessages((prevMessages) => [
-					...prevMessages,
-					{ text: `AI response to: ${input}`, user: false },
-				]);
-			}, 1000);
-
+			const userMessage = { text: input, user: true };
+			setMessages((previousMessages) => [...previousMessages, userMessage]);
 			setInput("");
+			setIsLoading(true);
+
+			try {
+				const apiMessages = messages.concat(userMessage).map((msg) => ({
+					role: msg.user ? "user" : "assistant",
+					content: msg.text,
+				}));
+
+				const response = await fetch("/api/openai", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ messages: apiMessages }),
+				});
+
+				if (!response.ok) {
+					throw new Error("Failed to fetch response");
+				}
+				const data = await response.json();
+
+				setMessages((previousMessages) => [
+					...previousMessages,
+					{ text: data.response, user: false },
+				]);
+			} catch (error) {
+				console.error("Error fetching AI response", error);
+				setMessages((previousMessages) => [
+					...previousMessages,
+					{
+						text: "Sorry I encountered an error. Please try again",
+						user: false,
+					},
+				]);
+			} finally {
+				setIsLoading(false);
+			}
 		}
 	};
 
@@ -45,6 +74,7 @@ const ChatBot: React.FC = () => {
 					</div>
 				))}
 			</div>
+			{isLoading && <div>AI is thinking...</div>}
 			<div className="p-4 border-t">
 				<div className="flex space-x-2">
 					<input
@@ -69,4 +99,4 @@ const ChatBot: React.FC = () => {
 	);
 };
 
-export default ChatBot;
+export default ChatComponent;
