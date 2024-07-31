@@ -143,11 +143,6 @@ const CustomSheet: React.FC<SheetProps> = ({
 				title: "The body keeps the score",
 				author: "Van Der Kolk",
 			},
-			{
-				type: "Podcast",
-				title: "Noo",
-				author: "Noo",
-			},
 		],
 	};
 
