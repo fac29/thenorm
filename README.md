@@ -13,9 +13,9 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [API Endpoints](#api-endpoints)
+<!-- - [API Endpoints](#api-endpoints)
 - [DB Diagram](#db-diagram)
-<!-- - [Testing](#testing)
+- [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license) -->
 
@@ -34,13 +34,13 @@
     npm install
     ```
 
-<!-- 3.  **Set up environment variables:**
+3.  **Set up environment variables:**
 
-    Create a `.env` file in the root directory and add your configuration settings.
+    Create a `.env.local` file in the root directory and add your configuration settings.
 
     ```env
-
-    ``` -->
+    OPENAI_API_KEY=YOUR_KEY_HERE
+    ```
 
 ## Usage
 
