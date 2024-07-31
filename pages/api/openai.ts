@@ -11,10 +11,19 @@ export default async function handler(
 ) {
 	if (req.method === "POST") {
 		try {
-			const { messages } = req.body;
+			const { messages, context } = req.body;
+
+			const systemMessage = {
+				role: "system",
+				content: `Prompt: ${context.prompt}\nPersona: ${
+					context.persona
+				}\nTherapeutic Approach: ${
+					context.therapeuticApproach
+				}\nUser Results: ${context.userResults.join(", ")}`,
+			};
 
 			const completion = await openai.chat.completions.create({
-				messages: messages,
+				messages: [systemMessage, ...messages],
 				model: "gpt-4o-mini",
 			});
 
