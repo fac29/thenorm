@@ -7,11 +7,6 @@ import TheNormOutside from "../public/The-Norm_Wheel_Outside1.png";
 
 import CustomSheet from "./CustomSheet";
 
-interface PieChartData {
-	text: string;
-	color: "red" | "orange" | "green";
-}
-
 interface PieChartProps {
 	width?: number;
 	height?: number;
@@ -20,12 +15,13 @@ interface PieChartProps {
 interface PieChartData {
 	text: string;
 	match: string;
-	color: "red" | "orange" | "green";
+	color: "red" | "orange" | "green" | "white";
 }
 
 const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 	const svgRef = useRef<SVGSVGElement | null>(null);
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+	const [isSegmentWhite, setIsSegmentWhite] = useState<boolean>(true);
 	const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
 	const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
 
@@ -94,7 +90,7 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 			return {
 				text: text,
 				match: match,
-				color: determineColour(match) as "red" | "orange" | "green",
+				color: determineColour(match) as "red" | "orange" | "green" | "white",
 			};
 		});
 
@@ -217,13 +213,21 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 
 	return (
 		<div>
-			<svg ref={svgRef}>
-				<CustomSheet
-					selectedSegment={selectedSegment}
-					isSheetOpen={isSheetOpen}
-					setIsSheetOpen={setIsSheetOpen}
-				/>
-			</svg>
+			{isSegmentWhite ? (
+				<div>
+					<svg ref={svgRef}></svg>
+				</div>
+			) : (
+				<div>
+					<svg ref={svgRef}>
+						<CustomSheet
+							selectedSegment={selectedSegment}
+							isSheetOpen={isSheetOpen}
+							setIsSheetOpen={setIsSheetOpen}
+						/>
+					</svg>
+				</div>
+			)}
 		</div>
 	);
 };
