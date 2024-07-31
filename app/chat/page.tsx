@@ -2,7 +2,7 @@
 
 import React from "react";
 import type { Metadata } from "next";
-import ChatBot from "@/components/component/chatbot";
+import ChatComponent from "@/components/chatcomponent";
 
 // export const metadata: Metadata = {
 // 	title: "theNorm",
@@ -12,7 +12,7 @@ import ChatBot from "@/components/component/chatbot";
 export default function Chat() {
 	return (
 		<div>
-			<ChatBot />
+			<ChatComponent />
 		</div>
 	);
 }
