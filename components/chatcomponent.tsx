@@ -6,14 +6,14 @@ interface Message {
 	user: boolean;
 }
 
-interface ConversationContext {
+interface ConversationPrompt {
 	prompt: string;
 	persona: string;
 	therapeuticApproach: string;
 	userResults: string[];
 }
 
-const conversationContext: ConversationContext = {
+const conversationPrompt: ConversationPrompt = {
 	prompt:
 		"You are a therapy assistant with this persona and therapic approach you are going to receive user results from an inital test the patient has carried out",
 	persona:
@@ -47,7 +47,7 @@ const ChatComponent: React.FC = () => {
 	const [messages, setMessages] = React.useState<Message[]>([]);
 	const [input, setInput] = React.useState<string>("");
 	const [isLoading, setIsLoading] = React.useState(false);
-	const [context, setContext] = React.useState<ConversationContext>({
+	const [prompt, setPrompt] = React.useState<ConversationPrompt>({
 		prompt: "",
 		persona: "",
 		therapeuticApproach: "",
@@ -55,7 +55,7 @@ const ChatComponent: React.FC = () => {
 	});
 
 	useEffect(() => {
-		setContext(conversationContext);
+		setPrompt(conversationPrompt);
 	}, []);
 
 	const handleSend = async (): Promise<void> => {
@@ -76,7 +76,7 @@ const ChatComponent: React.FC = () => {
 					headers: {
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({ messages: apiMessages, context }),
+					body: JSON.stringify({ messages: apiMessages, prompt }),
 				});
 
 				if (!response.ok) {
