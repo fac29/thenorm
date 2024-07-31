@@ -13,26 +13,70 @@ interface PieChartData {
 }
 
 interface PieChartProps {
-	data: PieChartData[];
 	width?: number;
 	height?: number;
 }
 
-const PieChart: React.FC<PieChartProps> = ({
-	data,
-	width = 500,
-	height = 500,
-}) => {
+interface PieChartData {
+	text: string;
+	match: string;
+	color: "red" | "orange" | "green";
+}
+
+const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 	const svgRef = useRef<SVGSVGElement | null>(null);
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 	const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
 	const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
 
+	const segmentNamesArr = [
+		"Identify: somewhat",
+		"Lifespan: somewhat",
+		"Community: not at all",
+		"Passions: somewhat",
+		"Structure: somewhat",
+		"Pressure points: somewhat",
+		"Development: well",
+		"Support: somewhat",
+		"The Barrel: somewhat",
+		"Transition Management: well",
+		"Strengths: well",
+		"Balance: somewhat",
+		"Energy flow: not at all",
+		"Emotions: not at all",
+		"Gut health: somewhat",
+		"Body: not at all",
+		"Senses: somewhat",
+		"Brain: well",
+	];
+
+	const determineColour = (match: string) => {
+		if (match === "well") {
+			return "green";
+		} else if (match === "somewhat") {
+			return "orange";
+		} else if (match === "not at all") {
+			return "red";
+		}
+	};
+
+	const pieData: PieChartData[] = Array(18)
+		.fill(null)
+		.map((_, i) => {
+			const text = segmentNamesArr[i].split(":")[0];
+			const match = segmentNamesArr[i].split(":")[1].trimStart();
+			return {
+				text: text,
+				match: match,
+				color: determineColour(match) as "red" | "orange" | "green",
+			};
+		});
+
 	useEffect(() => {
 		if (svgRef.current) {
 			drawChart();
 		}
-	}, [data, width, height]);
+	}, [pieData, width, height]);
 
 	useEffect(() => {
 		updateHoveredSegment();
@@ -95,10 +139,7 @@ const PieChart: React.FC<PieChartProps> = ({
 			.sort(null);
 
 		// Ensure we always have 18 segments
-		const paddedData = [
-			...data,
-			// ...Array(18 - data.length).fill({ text: "", color: "green" }),
-		].slice(0, 18);
+		const paddedData = [...pieData].slice(0, 18);
 
 		const segments = pie(paddedData);
 
@@ -140,12 +181,6 @@ const PieChart: React.FC<PieChartProps> = ({
 	};
 
 	const updateHoveredSegment = () => {
-		const radius = Math.min(width, height) / 2;
-		const arc = d3
-			.arc<d3.PieArcDatum<PieChartData>>()
-			.innerRadius(radius * 0.3)
-			.outerRadius(radius * 0.9);
-
 		d3.select(svgRef.current)
 			.selectAll<SVGPathElement, d3.PieArcDatum<PieChartData>>(".arc path")
 			.transition()
