@@ -6,10 +6,57 @@ interface Message {
 	user: boolean;
 }
 
+interface ConversationContext {
+	prompt: string;
+	persona: string;
+	therapeuticApproach: string;
+	userResults: string[];
+}
+
+const conversationContext: ConversationContext = {
+	prompt:
+		"You are a therapy assistant with this persona and therapic approach you are going to receive user results from an inital test the patient has carried out",
+	persona:
+		"Warm responses. An emphasis on compassion rather than being overly professional. A response that encourages curiosity, not always just “advice” or suggestions.",
+	therapeuticApproach:
+		"Specialist knowledge in Neurodiversity Narrative Therapy Informed Trauma awareness Pluralistic approach Mindfulness & use of visualisation recommendations Strengths based and Positive Psychology influences Risk assessment basic level - protocol for suicidal ideation",
+	userResults: [
+		"results from the norm test",
+		"Identify: somewhat",
+		"Lifespan: somewhat",
+		"Community: not at all",
+		"Passions: somewhat",
+		"Structure: somewhat",
+		"Pressure points: somewhat",
+		"Development: well",
+		"Support: somewhat",
+		"The Barrel: somewhat",
+		"Transition Management: well",
+		"Strengths: well",
+		"Balance: somewhat",
+		"Energy flow: not at all",
+		"Emotions: not at all",
+		"Gut health: somewhat",
+		"Body: not at all",
+		"Senses: somewhat",
+		"Brain: well",
+	],
+};
+
 const ChatComponent: React.FC = () => {
 	const [messages, setMessages] = React.useState<Message[]>([]);
 	const [input, setInput] = React.useState<string>("");
 	const [isLoading, setIsLoading] = React.useState(false);
+	const [context, setContext] = React.useState<ConversationContext>({
+		prompt: "",
+		persona: "",
+		therapeuticApproach: "",
+		userResults: [],
+	});
+
+	useEffect(() => {
+		setContext(conversationContext);
+	}, []);
 
 	const handleSend = async (): Promise<void> => {
 		if (input.trim()) {
@@ -29,7 +76,7 @@ const ChatComponent: React.FC = () => {
 					headers: {
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({ messages: apiMessages }),
+					body: JSON.stringify({ messages: apiMessages, context }),
 				});
 
 				if (!response.ok) {
