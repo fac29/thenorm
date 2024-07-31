@@ -23,11 +23,6 @@ export default function Home() {
 			<h1 className="text-3xl font-bold mb-8 text-gray-800">the norm</h1>
 			<h2>find and nourish yours now</h2>
 			<PieChart />
-			{/* <img src="The-Norm_Wheel_WHITE 1.jpg" alt="" /> */}
-
-			{/* <div>
-				<ModeToggle />
-			</div> */}
 			<div>
 				<Button variant="default">Start now..</Button>
 			</div>
