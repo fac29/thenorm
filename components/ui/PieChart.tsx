@@ -5,6 +5,8 @@ import * as d3 from "d3";
 import TheNormLogo from "../../public/thenorm-centre-edit.png";
 import TheNormOutside from "../../public/The-Norm_Wheel_Outside1.png";
 
+import CustomSheet from "../CustomSheet";
+
 interface PieChartData {
 	text: string;
 	color: "red" | "orange" | "green";
@@ -12,19 +14,19 @@ interface PieChartData {
 
 interface PieChartProps {
 	data: PieChartData[];
-	onSegmentClick: (index: number) => void;
 	width?: number;
 	height?: number;
 }
 
 const PieChart: React.FC<PieChartProps> = ({
 	data,
-	onSegmentClick,
 	width = 500,
 	height = 500,
 }) => {
 	const svgRef = useRef<SVGSVGElement | null>(null);
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+	const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
+	const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (svgRef.current) {
@@ -95,7 +97,7 @@ const PieChart: React.FC<PieChartProps> = ({
 		// Ensure we always have 18 segments
 		const paddedData = [
 			...data,
-			...Array(18 - data.length).fill({ text: "", color: "green" }),
+			// ...Array(18 - data.length).fill({ text: "", color: "green" }),
 		].slice(0, 18);
 
 		const segments = pie(paddedData);
@@ -108,7 +110,10 @@ const PieChart: React.FC<PieChartProps> = ({
 			.attr("class", "arc")
 			.on("mouseenter", (event, d) => setHoveredIndex(segments.indexOf(d)))
 			.on("mouseleave", () => setHoveredIndex(null))
-			.on("click", (event, d) => onSegmentClick(segments.indexOf(d)));
+			.on("click", (event, d) => {
+				setSelectedSegment(d.data.text);
+				setIsSheetOpen(true);
+			});
 
 		g.append("path")
 			.attr("d", arc)
@@ -149,7 +154,17 @@ const PieChart: React.FC<PieChartProps> = ({
 			);
 	};
 
-	return <svg ref={svgRef}></svg>;
+	return (
+		<div>
+			<svg ref={svgRef}>
+				<CustomSheet
+					selectedSegment={selectedSegment}
+					isSheetOpen={isSheetOpen}
+					setIsSheetOpen={setIsSheetOpen}
+				/>
+			</svg>
+		</div>
+	);
 };
 
 export default PieChart;
