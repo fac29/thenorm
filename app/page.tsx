@@ -1,18 +1,24 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
-import PieChart from "@/components/PieChart";
+import LandingPageTypeformNotComplete from "../components/LandingPageTypeformNotComplete";
+import LandingPageLoggedInTypeFormComplete from "../components/LandingPageLoggedInTypeFormComplete";
 
 export default function Home() {
+	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+	const [completedWheel, setCompletedWheel] = useState<boolean>(false);
 	return (
-		<div className="flex min-h-screen flex-row items-center justify-between">
-			<PieChart />
-			<h1 className="text-3xl font-bold mb-8 text-gray-800">the norm</h1>
-			<h2>find and nourish yours now</h2>
-			<div>
-				<Button variant="default">Start now..</Button>
-			</div>
+		<div>
+			{isLoggedIn === false && completedWheel === false && (
+				<LandingPageTypeformNotComplete completedWheel={completedWheel} />
+			)}
+			{isLoggedIn === true && completedWheel === false && (
+				<LandingPageTypeformNotComplete completedWheel={completedWheel} />
+			)}
+			{isLoggedIn === true && completedWheel === true && (
+				<LandingPageLoggedInTypeFormComplete completedWheel={completedWheel} />
+			)}
 		</div>
 	);
 }
