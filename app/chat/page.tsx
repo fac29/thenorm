@@ -2,7 +2,7 @@
 
 import React from "react";
 import type { Metadata } from "next";
-import ChatComponent from "@/components/chatcomponent";
+import AIChat from "@/components/AIChat";
 
 // export const metadata: Metadata = {
 // 	title: "theNorm",
@@ -12,7 +12,7 @@ import ChatComponent from "@/components/chatcomponent";
 export default function Chat() {
 	return (
 		<div>
-			<ChatComponent />
+			<AIChat />
 		</div>
 	);
 }

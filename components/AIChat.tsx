@@ -44,7 +44,7 @@ const conversationPrompt: ConversationPrompt = {
 	],
 };
 
-const ChatComponent: React.FC = () => {
+const AIChat: React.FC = () => {
 	const [messages, setMessages] = React.useState<Message[]>([]);
 	const [input, setInput] = React.useState<string>("");
 	const [isLoading, setIsLoading] = React.useState(false);
@@ -158,4 +158,4 @@ const ChatComponent: React.FC = () => {
 	);
 };
 
-export default ChatComponent;
+export default AIChat;
