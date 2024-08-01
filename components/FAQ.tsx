@@ -38,7 +38,7 @@ const accordionData = [
 
 export default function FAQ() {
 	return (
-		<div>
+		<div className="flex flex-col items-center px-4 py-8">
 			<h2 className="text-center">FAQ's</h2>
 			<Accordion type="single" collapsible className="w-full max-w-md">
 				{accordionData.map((item) => (
