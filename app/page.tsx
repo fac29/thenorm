@@ -1,14 +1,9 @@
 "use client";
 import { ModeToggle } from "@/components/modetoggle";
 import { Button } from "@/components/ui/button";
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
 
 import PieChart from "@/components/PieChart";
+import FAQ from "@/components/FAQ";
 
 //import Image from 'next/image';
 
@@ -31,16 +26,7 @@ export default function Home() {
 			<div>
 				<Button variant="default">Start now..</Button>
 			</div>
-			<div>
-				<Accordion type="single" collapsible>
-					<AccordionItem value="item-1">
-						<AccordionTrigger>Is it accessible?</AccordionTrigger>
-						<AccordionContent>
-							Yes. It adheres to the WAI-ARIA design pattern.
-						</AccordionContent>
-					</AccordionItem>
-				</Accordion>
-			</div>
+			<FAQ />
 		</div>
 	);
 }
