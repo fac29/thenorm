@@ -7,48 +7,29 @@ import TheNormOutside from "../public/The-Norm_Wheel_Outside1.png";
 
 import CustomSheet from "./CustomSheet";
 
-interface PieChartData {
-	text: string;
-	color: "red" | "orange" | "green";
-}
-
 interface PieChartProps {
 	width?: number;
 	height?: number;
+	segmentNames: string[];
+	completedWheel: boolean;
 }
 
 interface PieChartData {
 	text: string;
 	match: string;
-	color: "red" | "orange" | "green";
+	color: "red" | "orange" | "green" | "white";
 }
 
-const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
+const PieChart: React.FC<PieChartProps> = ({
+	width = 600,
+	height = 600,
+	segmentNames,
+	completedWheel,
+}) => {
 	const svgRef = useRef<SVGSVGElement | null>(null);
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 	const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
 	const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
-
-	const segmentNamesArr = [
-		"Identify: somewhat",
-		"Lifespan: somewhat",
-		"Community: not at all",
-		"Passions: somewhat",
-		"Structure: somewhat",
-		"Pressure points: somewhat",
-		"Development: well",
-		"Support: somewhat",
-		"The Barrel: somewhat",
-		"Transition Management: well",
-		"Strengths: well",
-		"Balance: somewhat",
-		"Energy flow: not at all",
-		"Emotions: not at all",
-		"Gut health: somewhat",
-		"Body: not at all",
-		"Senses: somewhat",
-		"Brain: well",
-	];
 
 	const determineColour = (match: string) => {
 		if (match === "well") {
@@ -57,18 +38,23 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 			return "orange";
 		} else if (match === "not at all") {
 			return "red";
+		} else if (match === "") {
+			return "white";
 		}
 	};
 
 	const pieData: PieChartData[] = Array(18)
 		.fill(null)
 		.map((_, i) => {
-			const text = segmentNamesArr[i].split(":")[0];
-			const match = segmentNamesArr[i].split(":")[1].trimStart();
+			const text = segmentNames[i].split(":")[0];
+			const match =
+				segmentNames[i].indexOf(":") === -1
+					? ""
+					: segmentNames[i].split(":")[1].trimStart();
 			return {
 				text: text,
 				match: match,
-				color: determineColour(match) as "red" | "orange" | "green",
+				color: determineColour(match) as "red" | "orange" | "green" | "white",
 			};
 		});
 
@@ -159,7 +145,7 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 		g.append("path")
 			.attr("d", arc)
 			.style("fill", (d) => d.data.color)
-			.style("stroke", "white")
+			.style("stroke", "black")
 			.style("stroke-width", "1px")
 			.style("cursor", "pointer")
 			.style("transition", "fill 0.1s ease");
@@ -191,13 +177,20 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 
 	return (
 		<div>
-			<svg ref={svgRef}>
-				<CustomSheet
-					selectedSegment={selectedSegment}
-					isSheetOpen={isSheetOpen}
-					setIsSheetOpen={setIsSheetOpen}
-				/>
-			</svg>
+			{completedWheel ? (
+				<div>
+					<svg ref={svgRef}></svg>
+					<CustomSheet
+						selectedSegment={selectedSegment}
+						isSheetOpen={isSheetOpen}
+						setIsSheetOpen={setIsSheetOpen}
+					/>
+				</div>
+			) : (
+				<div>
+					<svg ref={svgRef}></svg>
+				</div>
+			)}
 		</div>
 	);
 };
