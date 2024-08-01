@@ -32,7 +32,7 @@ export default function LandingPageTypeFormNotComplete({
 		"Brain",
 	];
 	return (
-		<div className="flex max-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+		<div className="flex max-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8 mb-8 md:mb-12 lg:mb-16 xl:mb-24">
 			<div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center space-y-8 lg:space-y-0 lg:space-x-12">
 				<div className="w-full lg:w-1/2 flex justify-center items-center">
 					<PieChart
