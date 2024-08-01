@@ -3,6 +3,7 @@ import { ModeToggle } from "@/components/modetoggle";
 import { Button } from "@/components/ui/button";
 
 import PieChart from "@/components/PieChart";
+import FAQ from "@/components/FAQ";
 
 //import Image from 'next/image';
 
