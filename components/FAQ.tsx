@@ -39,6 +39,7 @@ const accordionData = [
 export default function FAQ() {
 	return (
 		<div>
+			<h2 className="text-center">FAQ's</h2>
 			<Accordion type="single" collapsible className="w-full max-w-md">
 				{accordionData.map((item) => (
 					<AccordionItem key={item.id} value={item.id}>
