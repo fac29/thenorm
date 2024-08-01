@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "./ui/button";
+import { useChatScroll } from "./useChatScroll";
 
 interface Message {
 	text: string;
@@ -54,6 +55,14 @@ const ChatComponent: React.FC = () => {
 		userResults: [],
 	});
 
+	// Use the chat scroll hook
+	const { ref, scrollToBottom } = useChatScroll<HTMLDivElement>();
+
+	// Scroll to bottom whenever messages change
+	useEffect(() => {
+		scrollToBottom();
+	}, [messages]);
+
 	useEffect(() => {
 		setPrompt(conversationPrompt);
 	}, []);
@@ -105,7 +114,10 @@ const ChatComponent: React.FC = () => {
 
 	return (
 		<div className="flex flex-col h-[550px] max-w-md mx-auto">
-			<div className="flex-1 overflow-y-auto p-4 space-y-4">
+			<div
+				ref={ref}
+				className="flex-1 overflow-y-auto p-4 space-y-4 chat-history"
+			>
 				{messages.map((message, index) => (
 					<div
 						key={index}
