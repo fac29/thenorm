@@ -10,6 +10,8 @@ import CustomSheet from "./CustomSheet";
 interface PieChartProps {
 	width?: number;
 	height?: number;
+	segmentNames: string[];
+	completedWheel: boolean;
 }
 
 interface PieChartData {
@@ -18,54 +20,16 @@ interface PieChartData {
 	color: "red" | "orange" | "green" | "white";
 }
 
-const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
+const PieChart: React.FC<PieChartProps> = ({
+	width = 600,
+	height = 600,
+	segmentNames,
+	completedWheel,
+}) => {
 	const svgRef = useRef<SVGSVGElement | null>(null);
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-	const [isSegmentWhite, setIsSegmentWhite] = useState<boolean>(true);
 	const [selectedSegment, setSelectedSegment] = useState<string | null>(null);
 	const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
-
-	// const segmentNamesArr = [
-	// 	"Identify: somewhat",
-	// 	"Lifespan: somewhat",
-	// 	"Community: not at all",
-	// 	"Passions: somewhat",
-	// 	"Structure: somewhat",
-	// 	"Pressure points: somewhat",
-	// 	"Development: well",
-	// 	"Support: somewhat",
-	// 	"The Barrel: somewhat",
-	// 	"Transition Management: well",
-	// 	"Strengths: well",
-	// 	"Balance: somewhat",
-	// 	"Energy flow: not at all",
-	// 	"Emotions: not at all",
-	// 	"Gut health: somewhat",
-	// 	"Body: not at all",
-	// 	"Senses: somewhat",
-	// 	"Brain: well",
-	// ];
-
-	const segmentNamesArr = [
-		"Identify",
-		"Lifespan",
-		"Community",
-		"Passions",
-		"Structure",
-		"Pressure points",
-		"Development",
-		"Support",
-		"The Barrel",
-		"Transition Management",
-		"Strengths",
-		"Balance",
-		"Energy flow",
-		"Emotions",
-		"Gut health",
-		"Body",
-		"Senses",
-		"Brain",
-	];
 
 	const determineColour = (match: string) => {
 		if (match === "well") {
@@ -82,11 +46,11 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 	const pieData: PieChartData[] = Array(18)
 		.fill(null)
 		.map((_, i) => {
-			const text = segmentNamesArr[i].split(":")[0];
+			const text = segmentNames[i].split(":")[0];
 			const match =
-				segmentNamesArr[i].indexOf(":") === -1
+				segmentNames[i].indexOf(":") === -1
 					? ""
-					: segmentNamesArr[i].split(":")[1].trimStart();
+					: segmentNames[i].split(":")[1].trimStart();
 			return {
 				text: text,
 				match: match,
@@ -213,19 +177,18 @@ const PieChart: React.FC<PieChartProps> = ({ width = 600, height = 600 }) => {
 
 	return (
 		<div>
-			{isSegmentWhite ? (
+			{completedWheel ? (
 				<div>
 					<svg ref={svgRef}></svg>
+					<CustomSheet
+						selectedSegment={selectedSegment}
+						isSheetOpen={isSheetOpen}
+						setIsSheetOpen={setIsSheetOpen}
+					/>
 				</div>
 			) : (
 				<div>
-					<svg ref={svgRef}>
-						<CustomSheet
-							selectedSegment={selectedSegment}
-							isSheetOpen={isSheetOpen}
-							setIsSheetOpen={setIsSheetOpen}
-						/>
-					</svg>
+					<svg ref={svgRef}></svg>
 				</div>
 			)}
 		</div>
