@@ -13,12 +13,12 @@ export function Footer() {
 						<h4 className="text-lg font-semibold m-1">Quick Links</h4>
 						<ul className="space-y-2 m-1">
 							<li>
-								<Link href="/" className="hover:text-gray-600 text-sm">
+								<Link href="/" className="hover:text-purple-600 text-sm">
 									Home
 								</Link>
 							</li>
 							<li>
-								<Link href="/about" className="hover:text-gray-600 text-sm">
+								<Link href="/about" className="hover:text-purple-600 text-sm">
 									About
 								</Link>
 							</li>
