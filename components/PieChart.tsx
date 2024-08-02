@@ -34,11 +34,14 @@ const PieChart: React.FC<PieChartProps> = ({
 	const determineColour = (match: string) => {
 		if (match === "well") {
 			return "green";
-		} else if (match === "somewhat") {
+		}
+		if (match === "somewhat") {
 			return "orange";
-		} else if (match === "not at all") {
+		}
+		if (match === "not at all") {
 			return "red";
-		} else if (match === "") {
+		}
+		if (match === "") {
 			return "white";
 		}
 	};
@@ -166,7 +169,7 @@ const PieChart: React.FC<PieChartProps> = ({
 			)
 			.style("transition", "fill 0.1s ease");
 
-		// Add text labels if needed
+		// Add text labels
 		g.append("text")
 			.attr("transform", (d) => {
 				const [x, y] = arc.centroid(d); // Get the centroid position for the text
