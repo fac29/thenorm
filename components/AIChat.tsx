@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "./ui/button";
+import { useChatScroll } from "./useChatScroll";
 
 interface Message {
 	text: string;
@@ -15,9 +16,9 @@ interface ConversationPrompt {
 
 const conversationPrompt: ConversationPrompt = {
 	prompt:
-		"You are a therapy assistant with this persona and therapic approach you are going to receive user results from an inital test the patient has carried out",
+		"You are a therapy assistant with this persona and therapeutic approach. You work for the norm which is a platform that empowers people to understand, work on and improve their own mental health. It has been developed by Dr Jo Carlile, Clinical Psychologist, who founded the norm platfrom. You are going to receive user results from an initial test the user has carried out, to give you context to help each user",
 	persona:
-		"Warm responses. An emphasis on compassion rather than being overly professional. A response that encourages curiosity, not always just “advice” or suggestions.",
+		"Warm responses. An emphasis on compassion rather than being overly professional. A response that encourages curiosity, not always just “advice” or suggestions. Please use paragraphs if the answer is long",
 	therapeuticApproach:
 		"Specialist knowledge in Neurodiversity Narrative Therapy Informed Trauma awareness Pluralistic approach Mindfulness & use of visualisation recommendations Strengths based and Positive Psychology influences Risk assessment basic level - protocol for suicidal ideation",
 	userResults: [
@@ -43,7 +44,7 @@ const conversationPrompt: ConversationPrompt = {
 	],
 };
 
-const ChatComponent: React.FC = () => {
+const AIChat: React.FC = () => {
 	const [messages, setMessages] = React.useState<Message[]>([]);
 	const [input, setInput] = React.useState<string>("");
 	const [isLoading, setIsLoading] = React.useState(false);
@@ -53,6 +54,14 @@ const ChatComponent: React.FC = () => {
 		therapeuticApproach: "",
 		userResults: [],
 	});
+
+	// Use the chat scroll hook
+	const { ref, scrollToBottom } = useChatScroll<HTMLDivElement>();
+
+	// Scroll to bottom whenever messages change
+	useEffect(() => {
+		scrollToBottom();
+	}, [messages]);
 
 	useEffect(() => {
 		setPrompt(conversationPrompt);
@@ -105,7 +114,10 @@ const ChatComponent: React.FC = () => {
 
 	return (
 		<div className="flex flex-col h-[550px] max-w-md mx-auto">
-			<div className="flex-1 overflow-y-auto p-4 space-y-4">
+			<div
+				ref={ref}
+				className="flex-1 overflow-y-auto p-4 space-y-4 chat-history"
+			>
 				{messages.map((message, index) => (
 					<div
 						key={index}
@@ -146,4 +158,4 @@ const ChatComponent: React.FC = () => {
 	);
 };
 
-export default ChatComponent;
+export default AIChat;
