@@ -15,11 +15,10 @@ export default async function handler(
 
 			const systemMessage = {
 				role: "system",
-				content: `Prompt: ${prompt.prompt}\nPersona: ${
-					prompt.persona
-				}\nTherapeutic Approach: ${
-					prompt.therapeuticApproach
-				}\nUser Results: ${prompt.userResults.join(", ")}`,
+				content: `Prompt: ${prompt.prompt},
+				Persona: ${prompt.persona},
+				Therapeutic Approach: ${prompt.therapeuticApproach},
+				User Results: ${prompt.userResults.join(", ")}`,
 			};
 
 			const completion = await openai.chat.completions.create({
