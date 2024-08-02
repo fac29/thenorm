@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export const metadata: Metadata = {
 	title: "theNorm",
@@ -12,15 +13,53 @@ export const metadata: Metadata = {
 export default function About() {
 	return (
 		<div className="max-w-6xl mx-auto px-4 py-8">
-			<h1 className="text-3xl font-bold mb-8 text-gray-800">
-				Welcome to the norm
-			</h1>
-
 			<Card className="mb-8">
 				<CardHeader>
-					<CardTitle>Helping you to help yourself</CardTitle>
+					<CardTitle>Nice to meet you</CardTitle>
 				</CardHeader>
 				<CardContent>
+					<Image
+						src="/jo_profile_square.jpeg"
+						width={350}
+						height={350}
+						alt="Picture of the foudner"
+						className="rounded-3xl object-cover shadow-lg"
+					/>
+					<p>
+						My name is Jo and I am a Clinical Psychologist. Which essentially
+						means I am someone who helps people navigate the curve balls of
+						life. I worked in the NHS for many years and left to build my own
+						practice to work in a way that suited my needs and that of my
+						family.
+					</p>
+					<h3>What’s the vision?</h3>
+					<p>
+						the norm is my attempt at disrupting the culture of mental health.
+						It’s time to break the cycle of becoming unwell before we figure out
+						how to stay well. Over the years as a Psychologist I have seen the
+						efforts made in the pursuit of normality. Without realising it
+						people are often trying to live someone else’s story.
+					</p>
+					<p>
+						I want people to realise that they can write their own. That the
+						real success to feeling ‘normal’ is to live a life that is based on
+						who you are as an individual and what’s important to you.
+					</p>
+					<p>
+						Over the past two years I have had a vision. A wish to create a
+						platform that enables people to:
+					</p>
+					<ol className="list-decimal pl-6 space-y-2">
+						<li>
+							Make sense of who they are so they can design a lifestyle that
+							suits them
+						</li>
+						<li>Access and make sense of good quality resources and support</li>
+						<li>
+							To have 24/7 therapeutic guidance to answer all things mental
+							health.
+						</li>
+					</ol>
 					<div className="space-y-6 text-gray-700">
 						<p>
 							We are disrupting the culture of mental health. We are challenging
@@ -100,25 +139,6 @@ export default function About() {
 					</div>
 				</CardContent>
 			</Card>
-			{/* <Card className="mb-8">
-				<CardHeader>
-					<CardTitle>State of Mental Health</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<p className="text-black mb-4">
-						At Our Company, we strive to innovate and create solutions that make
-						a positive impact on people's lives. Our team of dedicated
-						professionals works tirelessly to deliver high-quality products and
-						services that exceed our customers' expectations.
-					</p>
-					<p className="text-black mb-4">
-						Founded in 2010, we have grown from a small startup to a leader in
-						our industry, serving clients worldwide. Our commitment to
-						excellence and customer satisfaction drives everything we do.
-					</p>
-					<Button>Learn More</Button>
-				</CardContent>
-			</Card> */}
 
 			<h2 className="text-2xl font-semibold mb-4">Meet the Team</h2>
 			<div className="grid md:grid-cols-3 gap-8">
@@ -126,9 +146,7 @@ export default function About() {
 					<Card key={name}>
 						<CardContent className="pt-6">
 							<Avatar className="w-24 h-24 mx-auto mb-4">
-								<AvatarImage
-									src={`/avatars/${name.toLowerCase().replace(" ", "-")}.jpg`}
-								/>
+								<AvatarImage src="/jo_profile_square.jpeg" />
 								<AvatarFallback>
 									{name
 										.split(" ")
