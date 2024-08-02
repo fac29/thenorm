@@ -195,12 +195,12 @@ const PieChart: React.FC<PieChartProps> = ({
 	};
 
 	return (
-		<div className="w-full h-auto">
+		<div className="max-w-full h-auto">
 			{completedWheel ? (
-				<div className="w-full h-auto relative">
+				<div className="max-w-full h-auto relative">
 					<svg
 						ref={svgRef}
-						className="w-full h-auto"
+						className="max-w-full h-auto"
 						viewBox="0 0 600 600"
 					></svg>
 					<CustomSheet
@@ -210,10 +210,10 @@ const PieChart: React.FC<PieChartProps> = ({
 					/>
 				</div>
 			) : (
-				<div className="w-full h-auto">
+				<div className="max-w-full h-auto">
 					<svg
 						ref={svgRef}
-						className="w-full h-auto"
+						className="max-w-full h-auto"
 						viewBox="0 0 600 600"
 					></svg>
 				</div>
