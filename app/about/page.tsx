@@ -14,7 +14,7 @@ export default function About() {
 	return (
 		<Card className="mb-8 bg-white shadow-lg rounded-lg overflow-hidden bg-opacity-30">
 			<CardHeader className="px-6 py-4">
-				<CardTitle className="text-2xl font-bold max-w-6xl p-6">
+				<CardTitle className="text-2xl font-bold p-6 max-w-6xl mx-auto p-6">
 					Nice to meet you
 				</CardTitle>
 			</CardHeader>
