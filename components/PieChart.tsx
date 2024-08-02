@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import * as d3 from "d3";
 import TheNormLogo from "../public/thenorm-centre-edit.png";
 import TheNormOutside from "../public/The-Norm_Wheel_Outside1.png";
@@ -43,20 +43,28 @@ const PieChart: React.FC<PieChartProps> = ({
 		}
 	};
 
-	const pieData: PieChartData[] = Array(18)
-		.fill(null)
-		.map((_, i) => {
-			const text = segmentNames[i].split(":")[0];
-			const match =
-				segmentNames[i].indexOf(":") === -1
-					? ""
-					: segmentNames[i].split(":")[1].trimStart();
-			return {
-				text: text,
-				match: match,
-				color: determineColour(match) as "red" | "orange" | "green" | "white",
-			};
-		});
+	const pieData: PieChartData[] = useMemo(
+		() =>
+			Array(18)
+				.fill(null)
+				.map((_, i) => {
+					const text = segmentNames[i].split(":")[0];
+					const match =
+						segmentNames[i].indexOf(":") === -1
+							? ""
+							: segmentNames[i].split(":")[1].trimStart();
+					return {
+						text: text,
+						match: match,
+						color: determineColour(match) as
+							| "red"
+							| "orange"
+							| "green"
+							| "white",
+					};
+				}),
+		[segmentNames] // Dependency array
+	);
 
 	useEffect(() => {
 		if (svgRef.current) {
