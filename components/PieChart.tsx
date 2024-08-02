@@ -195,10 +195,14 @@ const PieChart: React.FC<PieChartProps> = ({
 	};
 
 	return (
-		<div>
+		<div className="w-full h-auto">
 			{completedWheel ? (
-				<div>
-					<svg ref={svgRef}></svg>
+				<div className="w-full h-auto relative">
+					<svg
+						ref={svgRef}
+						className="w-full h-auto"
+						viewBox="0 0 600 600"
+					></svg>
 					<CustomSheet
 						selectedSegment={selectedSegment}
 						isSheetOpen={isSheetOpen}
@@ -206,8 +210,12 @@ const PieChart: React.FC<PieChartProps> = ({
 					/>
 				</div>
 			) : (
-				<div>
-					<svg ref={svgRef}></svg>
+				<div className="w-full h-auto">
+					<svg
+						ref={svgRef}
+						className="w-full h-auto"
+						viewBox="0 0 600 600"
+					></svg>
 				</div>
 			)}
 		</div>
