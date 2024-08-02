@@ -1,38 +1,37 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export function Footer() {
 	return (
-		<footer className="bg-white text-black py-8 bg-card/30">
-			<div className="container mx-auto px-4">
+		<footer className="bg-white text-black py-6 bg-card/30 w-full">
+			<div className="max-w-screen-lg mx-auto px-4">
 				<div className="flex flex-wrap justify-between">
-					<div className="w-full md:w-1/4 mb-6 md:mb-0">
-						<h3 className="text-xl font-bold mb-4">the norm</h3>
+					<div className="w-full sm:w-1/2 md:w-1/4 mb-6">
+						<h3 className="text-xl font-bold mb-3">the norm</h3>
 						<p className="text-sm">Mental health empowerment for all.</p>
 					</div>
-					<div className="w-full md:w-1/4 mb-6 md:mb-0">
-						<h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+					<div className="w-full sm:w-1/2 md:w-1/4 mb-6">
+						<h4 className="text-lg font-semibold mb-3">Quick Links</h4>
 						<ul className="space-y-2">
 							<li>
-								<Link href="/" className="hover:text-gray-300">
+								<Link href="/" className="hover:text-gray-600 text-sm">
 									Home
 								</Link>
 							</li>
 							<li>
-								<Link href="/about" className="hover:text-gray-300">
+								<Link href="/about" className="hover:text-gray-600 text-sm">
 									About
 								</Link>
 							</li>
 						</ul>
 					</div>
-					<div className="w-full md:w-1/4 mb-6 md:mb-0">
-						<h4 className="text-lg font-semibold mb-4">Contact Us</h4>
+					<div className="w-full sm:w-1/2 md:w-1/4 mb-6">
+						<h4 className="text-lg font-semibold mb-3">Contact Us</h4>
 						<p className="text-sm">123 Main St, City, Country</p>
-						<p className="text-sm">Email: hello@thenorm.life </p>
+						<p className="text-sm">Email: hello@thenorm.life</p>
 						<p className="text-sm">Phone: (123) 456-7890</p>
 					</div>
-					<div className="w-full md:w-1/4">
-						<h4 className="text-lg font-semibold mb-4">Follow Us</h4>
+					<div className="w-full sm:w-1/2 md:w-1/4">
+						<h4 className="text-lg font-semibold mb-3">Follow Us</h4>
 						<div className="flex space-x-4">
 							<a href="#" className="hover:text-purple-600">
 								<span className="sr-only">Facebook</span>
@@ -63,7 +62,7 @@ export function Footer() {
 						</div>
 					</div>
 				</div>
-				<div className="mt-8 border-t border-gray-700 pt-8 text-sm text-center">
+				<div className="mt-6 border-t border-gray-700 pt-4 text-sm text-center">
 					<p>
 						&copy; {new Date().getFullYear()} the norm. All rights reserved.
 					</p>
