@@ -72,7 +72,7 @@ export function Navbar() {
 							About
 						</Link>
 						<Link
-							href="/login"
+							href="/signUpLogin"
 							className="text-lg font-medium hover:underline underline-offset-4"
 							prefetch={false}
 						>
