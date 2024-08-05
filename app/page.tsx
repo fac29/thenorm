@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import LandingPageTypeformNotComplete from "../components/LandingPageTypeformNotComplete";
-import LandingPageLoggedInTypeFormComplete from "../components/LandingPageLoggedInTypeFormComplete";
+import LandingPageNotLoggedIn from "../components/LandingPageNotLoggedIn";
+import LandingPageLoggedIn from "../components/LandingPageLoggedIn";
 import FAQ from "@/components/FAQ";
 
 export default function Home() {
