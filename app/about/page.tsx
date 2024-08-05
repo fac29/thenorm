@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export const metadata: Metadata = {
 	title: "theNorm",
@@ -11,137 +12,119 @@ export const metadata: Metadata = {
 
 export default function About() {
 	return (
-		<div className="max-w-6xl mx-auto px-4 py-8">
-			<h1 className="text-3xl font-bold mb-8 text-gray-800">
-				Welcome to the norm
-			</h1>
+		<Card className="mb-8">
+			<CardHeader className="px-6 py-4 w-full">
+				<CardTitle>Nice to meet you</CardTitle>
+			</CardHeader>
+			<CardContent className="max-w-6xl mx-auto p-6 sm:px-6 px-0">
+				<div className="flex flex-col space-y-6 px-6 sm:px-0">
+					<div className="flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-6">
+						<div className="flex-shrink-0 md:self-start">
+							<Image
+								src="/jo_profile_square.jpeg"
+								width={350}
+								height={350}
+								alt="The foudner"
+								className="rounded-3xl object-cover shadow-lg"
+							/>
+						</div>
 
-			<Card className="mb-8">
-				<CardHeader>
-					<CardTitle>Helping you to help yourself</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<div className="space-y-6 text-gray-700">
-						<p>
-							We are disrupting the culture of mental health. We are challenging
-							the idea of pursuing normality and instead reminding ourselves
-							that we all are unique in how we need to live and that is the real
-							norm. Without realising it we are often trying to live someone
-							else's story. It is time to let it go and start writing your own,
-							based on who you are and what is important to you.
+						<blockquote className="border-l-4 border-indigo-500 pl-4 italic text-lg text-gray-600 text-center md:self-center">
+							"My name is Jo and I am a Clinical Psychologist. Which essentially
+							means I am someone who helps people navigate the curve balls of
+							life. I worked in the NHS for many years and left to build my own
+							practice to work in a way that suited my needs and that of my
+							family."
+						</blockquote>
+					</div>
+
+					<div className="text-left text-gray-700">
+						<h3 className="font-semibold text-lg mb-2">What’s the vision?</h3>
+						<p className="mb-4">
+							the norm is my attempt at disrupting the culture of mental health.
+							It’s time to break the cycle of becoming unwell before we figure
+							out how to stay well. Over the years as a Psychologist I have seen
+							the efforts made in the pursuit of normality. Without realizing
+							it, people are often trying to live someone else’s story.
 						</p>
-						<p>
-							This platform is designed to get you ahead of the game. To deepen
-							your understanding of your own norms and how to nourish them. It’s
-							outdated to seek mental health support once things fall apart. The
-							norm allows you to be proactive in 3 simple steps.
+						<p className="mb-4">
+							I want people to realize that they can write their own. That the
+							real success to feeling ‘normal’ is to live a life that is based
+							on who you are as an individual and what’s important to you.
 						</p>
-						<ol className="list-decimal pl-6 space-y-2">
+						<p className="mb-4">
+							Over the past two years I have had a vision. A wish to create a
+							platform that enables people to:
+						</p>
+						<ol className="list-decimal pl-6 space-y-2 mb-4">
 							<li>
-								Learn who you are and what factors impact your stress levels,
-								including how to tweak your lifestyle to suit your needs.
+								Make sense of who they are so they can design a lifestyle that
+								suits them
 							</li>
 							<li>
-								To access resources and information with ease and understanding.
+								Access and make sense of good quality resources and support
 							</li>
 							<li>
-								To have 24/7 therapeutic guidance to answer all queries about
-								mental health with personalised responsive support.
+								Have 24/7 therapeutic guidance to answer all things mental
+								health.
 							</li>
 						</ol>
-						<p>
-							We want to make mental wellness empowering. Having your very own
-							pocket encyclopedia of knowledge. Helping you navigate life in a
-							way that is easy, private and useful.
+						<p className="mb-4">
+							We all have the complete ability to be in control of our mental
+							well-ness. As long as we are given the information and tools to do
+							so. Life will continue to throw us curve balls…..but if we have a
+							good solid bat we can whack them right back.
 						</p>
-						<p>
-							The norm is about keeping things real and balanced. It’s not a
-							place to over-analyse everything, but it is about prioritising
-							well-mess. It will help you live in a way that makes you feel less
-							stressed and it will do it in a way that makes you understand why.
+
+						<h3 className="font-semibold text-lg mb-2">
+							Do I need this in my life?
+						</h3>
+
+						<p className="mb-4">the norm is for you if any of these apply:</p>
+						<ul className="list-disc pl-6 space-y-1 mb-4">
+							<li>You are curious about what affects your mental well-ness</li>
+							<li>
+								You want to be progressive in designing an individual lifestyle
+								that suits
+							</li>
+							<li>
+								You find it frustrating that you can’t get make sense of where
+								to find good support and resources relating to mental health
+							</li>
+							<li>
+								It feels useful to have a therapeutic guide in your pocket for
+								whenever you might want information, advice, or support.
+							</li>
+							<li>
+								You have been in therapy and now want to keep a proactive space
+								to maintain well-ness
+							</li>
+						</ul>
+						<h3 className="font-semibold text-lg mb-2">The small print</h3>
+						<p className="mb-4">
+							the norm is built on the principles of psychological theory and
+							empirical evidence. It conceptualizes our mental health needs
+							within a framework of three areas. The first area is Neurology and
+							refers to the way we are wired. This remains fairly static
+							throughout our lives. The second area is Orientation which
+							connects with the current life-stage we are at. This changes as we
+							hit significant life milestones and transitions. The third and
+							final area is Resilience which taps into the power we have in our
+							strengths.
 						</p>
-						<div>
-							<p className="font-semibold mb-2">
-								The norm is for you if any of the following apply:
-							</p>
-							<ul className="list-disc pl-6 space-y-1">
-								<li>you are curious about what affects your mental health</li>
-								<li>
-									you want to be progressive and proactive in designing a life
-									based on your mental health needs
-								</li>
-								<li>
-									you have been in therapy and now want to put some skills into
-									practice
-								</li>
-								<li>
-									you find it frustrating that you can’t make sense of good
-									mental health resources on the internet.
-								</li>
-								<li>
-									you think it would be helpful to have a mini therapist in your
-									pocket who can answer mental health related questions.
-								</li>
-							</ul>
-						</div>
-						<p>
-							The norm is brought to you by Dr Jo Carlile. Clinical Psychologist
-							& Neurodiversity Specialist. It’s approach is embedded in evidence
-							based psychological theory and practice. It is designed as a
-							practice based service to empower individuals to design their life
-							through a therapeutic lense. 1:1 therapy is costly and limited.
-							The norm is about giving you the knowledge and the power to
-							understand and control your own mental health needs.
-						</p>
-						<p>
-							Life will always continue to throw you lemons. We want to give you
-							the tools so making your own lemonade becomes the norm.
+						<p className="mb-4">
+							Whilst the norm itself has not been empirically tested as a method
+							of maintaining well-ness, the individual theories it is built on
+							have been. It draws on principles of Neuroscience, Attachment
+							Theory, Trauma concepts, Positive Psychology, Cognitive Behaviour
+							Therapy, Narrative Therapy, and others. The platform aims to be a
+							piece of practice-based evidence that is less about research done
+							on others and more about your individual needs and ability to take
+							control of your own mental well-ness.
 						</p>
 					</div>
-				</CardContent>
-			</Card>
-			{/* <Card className="mb-8">
-				<CardHeader>
-					<CardTitle>State of Mental Health</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<p className="text-black mb-4">
-						At Our Company, we strive to innovate and create solutions that make
-						a positive impact on people's lives. Our team of dedicated
-						professionals works tirelessly to deliver high-quality products and
-						services that exceed our customers' expectations.
-					</p>
-					<p className="text-black mb-4">
-						Founded in 2010, we have grown from a small startup to a leader in
-						our industry, serving clients worldwide. Our commitment to
-						excellence and customer satisfaction drives everything we do.
-					</p>
-					<Button>Learn More</Button>
-				</CardContent>
-			</Card> */}
-
-			<h2 className="text-2xl font-semibold mb-4">Meet the Team</h2>
-			<div className="grid md:grid-cols-3 gap-8">
-				{["Jo", "Spot the Cat"].map((name) => (
-					<Card key={name}>
-						<CardContent className="pt-6">
-							<Avatar className="w-24 h-24 mx-auto mb-4">
-								<AvatarImage
-									src={`/avatars/${name.toLowerCase().replace(" ", "-")}.jpg`}
-								/>
-								<AvatarFallback>
-									{name
-										.split(" ")
-										.map((n) => n[0])
-										.join("")}
-								</AvatarFallback>
-							</Avatar>
-							<h3 className="text-xl font-semibold text-center">{name}</h3>
-							<p className="text-gray-600 text-center">Co-founder</p>
-						</CardContent>
-					</Card>
-				))}
-			</div>
-		</div>
+				</div>
+			</CardContent>
+		</Card>
 	);
 }
