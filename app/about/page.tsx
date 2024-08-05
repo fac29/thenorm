@@ -12,14 +12,12 @@ export const metadata: Metadata = {
 
 export default function About() {
 	return (
-		<Card className="mb-8 bg-white shadow-lg rounded-lg overflow-hidden bg-opacity-30">
-			<CardHeader className="px-6 py-4">
-				<CardTitle className="text-2xl font-bold p-6 max-w-6xl mx-auto p-6">
-					Nice to meet you
-				</CardTitle>
+		<Card className="mb-8">
+			<CardHeader className="px-6 py-4 w-full">
+				<CardTitle>Nice to meet you</CardTitle>
 			</CardHeader>
-			<CardContent className="max-w-6xl mx-auto p-6">
-				<div className="flex flex-col space-y-6">
+			<CardContent className="max-w-6xl mx-auto p-6 sm:px-6 px-0">
+				<div className="flex flex-col space-y-6 px-6 sm:px-0">
 					<div className="flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-6">
 						<div className="flex-shrink-0 md:self-start">
 							<Image
