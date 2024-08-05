@@ -1,8 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/themeprovider";
 import { NavBar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
@@ -20,22 +20,17 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body
-				className={`${inter.className} bg-gradient-norm bg-cover bg-center`}
-			>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
+			<UserProvider>
+				<body
+					className={`${inter.className} bg-gradient-norm bg-cover bg-center`}
 				>
 					<header>
 						<NavBar />
 					</header>
 					<main>{children}</main>
 					<Footer />
-				</ThemeProvider>
-			</body>
+				</body>
+			</UserProvider>
 		</html>
 	);
 }
