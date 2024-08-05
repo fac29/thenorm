@@ -1,7 +1,12 @@
+import { getSession } from "@auth0/nextjs-auth0";
+
 import Link from "next/link";
 import Image from "next/image";
 
-export function NavBar() {
+export async function NavBar() {
+	const session = await getSession();
+	const user = session?.user;
+
 	return (
 		<header className="flex h-32 items-center justify-between px-4 md:px-6">
 			<Link href="/" className="flex items-center gap-2" prefetch={false}>
@@ -32,13 +37,21 @@ export function NavBar() {
 						>
 							About
 						</Link>
-						<Link
-							href="/signUpLogin"
-							className="bg-white text-black px-8 py-4 rounded-r-lg hover:bg-[#e6e6e6]"
-							prefetch={false}
-						>
-							Login
-						</Link>
+						{user ? (
+							<a
+								className="bg-white text-black px-8 py-4 rounded-r-lg hover:bg-[#e6e6e6]"
+								href="/api/auth/logout"
+							>
+								Logout
+							</a>
+						) : (
+							<a
+								className="bg-white text-black px-8 py-4 rounded-r-lg hover:bg-[#e6e6e6]"
+								href="/api/auth/login"
+							>
+								Login
+							</a>
+						)}
 					</div>
 				</div>
 			</nav>

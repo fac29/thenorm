@@ -11,7 +11,7 @@ interface PieChartProps {
 	width?: number;
 	height?: number;
 	segmentNames: string[];
-	completedWheel: boolean;
+	completedWheel?: boolean;
 }
 
 interface PieChartData {
@@ -24,7 +24,7 @@ const PieChart: React.FC<PieChartProps> = ({
 	width = 600,
 	height = 600,
 	segmentNames,
-	completedWheel,
+	completedWheel = false,
 }) => {
 	const svgRef = useRef<SVGSVGElement | null>(null); // Reference to the SVG element for D3 manipulations
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

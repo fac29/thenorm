@@ -1,16 +1,8 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 
 import PieChart from "@/components/PieChart";
 
-interface LandingPageProps {
-	completedWheel: boolean;
-}
-
-export default function LandingPageTypeFormNotComplete({
-	completedWheel,
-}: LandingPageProps) {
+export default function LandingPageNotLoggedIn() {
 	const segmentNames = [
 		"Identify",
 		"Lifespan",
@@ -35,10 +27,7 @@ export default function LandingPageTypeFormNotComplete({
 		<div className="flex max-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8 mb-8 md:mb-12 lg:mb-16 xl:mb-24">
 			<div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center space-y-8 lg:space-y-0 lg:space-x-12">
 				<div className="w-full lg:w-1/2 flex justify-center items-center">
-					<PieChart
-						segmentNames={segmentNames}
-						completedWheel={completedWheel}
-					/>
+					<PieChart segmentNames={segmentNames} />
 				</div>
 				<div className="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start space-y-4">
 					<h1 className="text-3xl font-bold text-gray-800 text-center lg:text-left">
@@ -47,7 +36,9 @@ export default function LandingPageTypeFormNotComplete({
 					<h2 className="text-xl text-gray-600 text-center lg:text-left">
 						find and nourish yours now
 					</h2>
-					<Button variant="default">Start now..</Button>
+					<Button variant="default">
+						<a href="/api/auth/login">Start now...</a>
+					</Button>
 				</div>
 			</div>
 		</div>
