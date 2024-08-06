@@ -7,6 +7,8 @@ import {
 	SheetTrigger,
 } from "@/components/ui/sheet";
 
+import LinkPreview from "./LinkPreview";
+
 interface SheetProps {
 	selectedSegment: string | null;
 	isSheetOpen: boolean;
@@ -32,9 +34,10 @@ const CustomSheet: React.FC<SheetProps> = ({
 	const resources: Resources = {
 		BRAIN: [
 			{
-				type: "Book",
-				title: "ADHD: A hunter in a farmers world",
-				author: "Thom Hartmann",
+				type: "Video",
+				title: "Neurodiversity: The New Normal",
+				author: "Cynthia Coupé",
+				url: "https://www.youtube.com/watch?v=WprLOcEyh6M&feature=youtu.be",
 			},
 		],
 		SENSES: [
@@ -161,10 +164,11 @@ const CustomSheet: React.FC<SheetProps> = ({
 							(resource: Resource, index) => {
 								return (
 									<div key={index}>
-										<p>Title: {resource.title}</p>
+										{/* <p>Title: {resource.title}</p>
 										<p>Type: {resource.type}</p>
 										{resource.author && <p>Author: {resource.author}</p>}
-										{resource.url && <p>url: {resource.url}</p>}
+										{resource.url && <p>url: {resource.url}</p>} */}
+										<LinkPreview key={resource.url} url={resource.url} />
 									</div>
 								);
 							}
