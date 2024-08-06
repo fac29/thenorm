@@ -11,6 +11,16 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
 	title: "theNorm",
 	description: "Your own personal Jo in your pocket",
+	icons: {
+		icon: [
+			{
+				url: "/The-Norm_Logo_Strapline_WHITE_1.svg",
+				type: "image/svg+xml",
+				sizes: "any",
+			},
+		],
+		apple: [{ url: "/apple-icon-180x180.png", sizes: "180x180" }],
+	},
 };
 
 export default function RootLayout({
