@@ -15,20 +15,26 @@ const accordionData = [
 	},
 	{
 		id: "item-2",
+		trigger: "What’s this circle/wheel thing all about?",
+		content:
+			"The wheel is the centre of all things norm. It’s the visual framework showing you how many things affect your stress levels. It’s divided into 3 sections; Neurology, Orientation and Resilience. Each of the 18 factor sits within these areas and you will have your own individual way of needing these factors. Understanding your own wheel unlocks your power at choosing a less stressful lifestyle . Feel free to chat to our AI tool if you have more questions.",
+	},
+	{
+		id: "item-3",
 		trigger:
 			"If one of my wheel spokes is red, does that mean there is something wrong with me?",
 		content:
 			"The colour coded design of the wheel is simply there as a guide. The colours change depending on whether you have reflected that this might be an area of your life that is impacting your stress levels. If a spoke is red, this does not mean anything is wrong with you. But it suggests that there might be some changes to your lifestyle that could be make which might reduce your stress levels.",
 	},
 	{
-		id: "item-3",
+		id: "item-4",
 		trigger:
 			"Exploring these areas of my life has left me feeling anxious and worried. Who can I contact?",
 		content:
 			"It's understandable that these reflections might trigger thoughts and feelings that make you uncomfortable. We have set up a contact page that you can access here. Or for more urgent support and crisis management we recommend you call The Samaritans on 116 123",
 	},
 	{
-		id: "item-4",
+		id: "item-5",
 		trigger:
 			"I don't really feel that interested in my mental well-ness, should I even bother?",
 		content:
