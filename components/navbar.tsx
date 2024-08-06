@@ -38,7 +38,10 @@ export async function NavBar() {
 							About
 						</Link>
 						{user ? (
-							<a className="bg-white text-black px-8 py-4 rounded-r-lg hover:bg-[#e6e6e6]">
+							<a
+								href="/api/auth/logout"
+								className="bg-white text-black px-8 py-4 rounded-r-lg hover:bg-[#e6e6e6]"
+							>
 								Logout
 							</a>
 						) : (
