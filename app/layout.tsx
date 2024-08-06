@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 	icons: {
 		icon: [
 			{
-				url: "/The-Norm_Logo_Strapline_WHITE_1.svg",
+				url: "/The-Norm_Logo_Strapline_CHARCOAL_1.svg",
 				type: "image/svg+xml",
 				sizes: "any",
 			},
