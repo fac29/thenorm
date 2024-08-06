@@ -38,21 +38,16 @@ export async function NavBar() {
 							About
 						</Link>
 						{user ? (
-							<Link
-								href="/api/auth/logout"
-								className="bg-white text-black px-8 py-4 rounded-r-lg hover:bg-[#e6e6e6]"
-								prefetch={false}
-							>
+							<a className="bg-white text-black px-8 py-4 rounded-r-lg hover:bg-[#e6e6e6]">
 								Logout
-							</Link>
+							</a>
 						) : (
-							<Link
+							<a
 								href="/api/auth/login"
 								className="bg-white text-black px-8 py-4 rounded-r-lg hover:bg-[#e6e6e6]"
-								prefetch={false}
 							>
 								Login
-							</Link>
+							</a>
 						)}
 					</div>
 				</div>
@@ -88,21 +83,19 @@ export async function NavBar() {
 							About
 						</Link>
 						{user ? (
-							<Link
+							<a
 								href="/api/auth/logout"
 								className="text-lg font-medium hover:underline underline-offset-4"
-								prefetch={false}
 							>
 								Logout
-							</Link>
+							</a>
 						) : (
-							<Link
+							<a
 								href="/api/auth/login"
 								className="text-lg font-medium hover:underline underline-offset-4"
-								prefetch={false}
 							>
 								Login
-							</Link>
+							</a>
 						)}
 					</div>
 				</SheetContent>
