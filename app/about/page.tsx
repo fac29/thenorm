@@ -126,8 +126,8 @@ export default function About() {
 						</div>
 					</div>
 					<div className="text-left text-gray-700 py-12">
-						<h3 className="font-semibold text-lg mb-2">The small print</h3>
-						<p className="mb-4">
+						<h3 className="font-semibold text-[15px] mb-2">The small print</h3>
+						<p className="text-[13px] mb-4">
 							the norm is built on the principles of psychological theory and
 							empirical evidence. It conceptualizes our mental health needs
 							within a framework of three areas. The first area is Neurology and
@@ -138,7 +138,7 @@ export default function About() {
 							final area is Resilience which taps into the power we have in our
 							strengths.
 						</p>
-						<p className="mb-4">
+						<p className="text-[13px] mb-4">
 							Whilst the norm itself has not been empirically tested as a method
 							of maintaining well-ness, the individual theories it is built on
 							have been. It draws on principles of Neuroscience, Attachment
