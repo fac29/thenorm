@@ -122,6 +122,7 @@ const CustomSheet: React.FC<SheetProps> = ({
 				type: "Book",
 				title: "The Surrender Experiment",
 				author: "Michael Singer",
+				url: "https://untetheredsoul.com/surrender-experiment",
 			},
 		],
 		STRENGTHS: [
@@ -131,8 +132,16 @@ const CustomSheet: React.FC<SheetProps> = ({
 				url: "https://podcasts.apple.com/gb/podcast/the-adhd-womens-wellbeing-podcast/id1605386171?i=1000631023676",
 			},
 		],
-		"TRANSITION MANAGEMENT": [{ type: "App", title: "Good Thinking App" }],
-		"THE BARREL": [{ type: "App", title: "CALM App" }],
+		"TRANSITION MANAGEMENT": [
+			{
+				type: "App",
+				title: "Good Thinking App",
+				url: "https://www.good-thinking.uk/",
+			},
+		],
+		"THE BARREL": [
+			{ type: "App", title: "CALM App", url: "https://www.calm.com/" },
+		],
 		SUPPORT: [
 			{
 				type: "App",
@@ -145,6 +154,7 @@ const CustomSheet: React.FC<SheetProps> = ({
 				type: "Book",
 				title: "The body keeps the score",
 				author: "Van Der Kolk",
+				url: "https://www.besselvanderkolk.com/resources/the-body-keeps-the-score",
 			},
 		],
 	};
