@@ -66,7 +66,7 @@ You identified 3 areas of focus:
 	}
 
 	return (
-		<div>
+		<div className="max-w-screen-lg mx-auto px-4">
 			{user === undefined && <LandingPageNotLoggedIn />}
 			{user && <LandingPageLoggedIn />}
 			<FAQ />
