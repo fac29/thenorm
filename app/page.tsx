@@ -6,6 +6,9 @@ import FAQ from "@/components/FAQ";
 
 export default async function Home() {
 	const session = await getSession();
+	if (session) {
+		console.log(session.user);
+	}
 	const user = session?.user;
 
 	if (user) {
