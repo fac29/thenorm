@@ -1,11 +1,18 @@
-"use client";
-import { useState } from "react";
+import { getSession } from "@auth0/nextjs-auth0";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import PieChart from "@/components/PieChart";
 
-export default function LandingPageLoggedIn() {
-	const [completedWheel, setCompletedWheel] = useState<boolean>(true);
+export default async function LandingPageLoggedIn() {
+	const session = await getSession();
+	const user = session?.user;
+
+	const response = await fetch(`http://localhost:5158/api/User/${user?.sub}`);
+	const existingUser = await response.json();
+	const { name } = existingUser;
+
+	const completedWheel = true;
 	const segmentNamesWheelCompleted = [
 		"Identify: somewhat",
 		"Lifespan: somewhat",
@@ -60,7 +67,7 @@ export default function LandingPageLoggedIn() {
 					<div className="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start space-y-4">
 						<Card className="mb-8">
 							<CardHeader>
-								<CardTitle>Summary:</CardTitle>
+								<CardTitle>{name}'s Summary:</CardTitle>
 							</CardHeader>
 							<CardContent>
 								<div className="space-y-6 text-black-700">
