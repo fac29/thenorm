@@ -14,24 +14,24 @@ export default async function LandingPageLoggedIn() {
 
 	const completedWheel = true;
 	const segmentNamesWheelCompleted = [
-		"Identify: somewhat",
+		"Identify: not at all",
 		"Lifespan: somewhat",
 		"Community: not at all",
 		"Passions: somewhat",
 		"Structure: somewhat",
-		"Pressure points: somewhat",
+		"Pressure points: not at all",
 		"Development: well",
 		"Support: somewhat",
-		"The Barrel: somewhat",
+		"The Barrel: well",
 		"Transition Management: well",
 		"Strengths: well",
 		"Balance: somewhat",
 		"Energy flow: not at all",
-		"Emotions: not at all",
-		"Gut health: somewhat",
-		"Body: not at all",
-		"Senses: somewhat",
-		"Brain: well",
+		"Emotions: somewhat",
+		"Gut health: well",
+		"Body: somewhat",
+		"Senses: well",
+		"Brain: not at all",
 	];
 
 	const segmentNamesWheelNotCompleted = [
@@ -84,20 +84,21 @@ export default async function LandingPageLoggedIn() {
 										perhaps others need some focus.
 									</p>
 									<p>
-										You are an empathic person who enjoys connecting with
-										others. You have passion for sports and driving cars. You
-										are aware of the impact your stress has on your physical and
-										mental health and have a desire to change some things.
+										You have identified some great strengths and being aware of
+										what your senses need is one of them. You acknowledge that
+										you are in a tricky situation with the demands of your job,
+										but with some tweaks and extra support this will feel more
+										manageable.
 									</p>
 									<p>You identified 3 areas of focus:</p>
 									<p>
-										1. Create some more structure throughout the week to
-										increase predictability.
+										1. Speak with your boss around time management. Request to
+										block out protected admin time first thing to reduce
+										overwhelm.
 										<br />
-										2. Identify strategies to support you during times of change
-										and transition.
+										2. Priorisite swimming 3 times per week.
 										<br />
-										3. Prioritise some time each week for personal development.
+										3. Build professional community network to reduce isolation.
 									</p>
 								</div>
 							</CardContent>
