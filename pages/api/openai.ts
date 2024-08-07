@@ -18,7 +18,8 @@ export default async function handler(
 				content: `Prompt: ${prompt.prompt},
 				Persona: ${prompt.persona},
 				Therapeutic Approach: ${prompt.therapeuticApproach},
-				User Results: ${prompt.userResults.join(", ")}`,
+				User Results from the norm test: ${prompt.userNormTestResults},
+				User Result Paragraph, ${prompt.userResultParagraph}`,
 			};
 
 			const completion = await openai.chat.completions.create({
