@@ -44,6 +44,8 @@ const conversationPrompt: ConversationPrompt = {
 		"Body: somewhat",
 		"Senses: well",
 		"Brain: not at all",
+		"result paragraph",
+		"Well done for taking some time to get to know yourself a little better. Hopefully you have a bit more of a grasp on what your own unique mental health needs are, and whattweaks you can make to reduce your stress. Your colour wheel identifies which areas you might want to focus on, with red being areas of priority. The conversationhighlighted that you feel well matched in some areas butperhaps others need some focus. You have identified some great strengths and being aware of what your senses need is one of them. You acknowledge thatyou are in a tricky situation with the demands of your job,but with some tweaks and extra support this will feel moremanageable. You identified 3 areas of focus: 1. Speak with your boss around time management. Request to block out protected admin time first thing to reduce overwhelm. 2. Priorisite swimming 3 times per week. 3. Build professional community network to reduce isolation.",
 	],
 };
 
