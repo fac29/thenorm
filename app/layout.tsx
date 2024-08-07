@@ -21,14 +21,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<UserProvider>
-				<body
-					className={`${inter.className} bg-gradient-norm bg-cover bg-center`}
-				>
+				<body className={`${inter.className} bg-gradient-norm bg-cover`}>
 					<header>
 						<NavBar />
 					</header>
 					<main>{children}</main>
-					<Footer />
+					<footer>
+						<Footer />
+					</footer>
 				</body>
 			</UserProvider>
 		</html>

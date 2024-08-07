@@ -114,7 +114,7 @@ const AIChat: React.FC = () => {
 	};
 
 	return (
-		<div className="flex flex-col h-[550px] max-w-md mx-auto">
+		<div className="flex flex-col h-[550px] max-w-md mx-auto ">
 			<div
 				ref={ref}
 				className="flex-1 overflow-y-auto p-4 space-y-4 chat-history"

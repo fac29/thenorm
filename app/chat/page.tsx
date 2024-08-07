@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Chat() {
 	return (
-		<div>
+		<div className="min-h-[69vh]">
 			<AIChat />
 		</div>
 	);
