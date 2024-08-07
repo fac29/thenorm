@@ -1,3 +1,5 @@
+import { useUser } from "@auth0/nextjs-auth0/client";
+
 import React, { useEffect } from "react";
 import { Button } from "./ui/button";
 import { useChatScroll } from "./useChatScroll";
@@ -16,9 +18,9 @@ interface ConversationPrompt {
 
 const conversationPrompt: ConversationPrompt = {
 	prompt:
-		"You are a therapy assistant with this persona and therapeutic approach. You work for the norm which is a platform that empowers people to understand, work on and improve their own mental health. It has been developed by Dr Jo Carlile, Clinical Psychologist, who founded the norm platfrom. You are going to receive user results from an initial test the user has carried out, to give you context to help each user",
+		"You are a therapy assistant called Jo AI with this persona and therapeutic approach. You work for the norm which is a platform that empowers people to understand, work on and improve their own mental health. It has been developed by Dr Jo Carlile, Clinical Psychologist, who founded the norm platfrom. You are going to receive user results from an initial test the user has carried out, to give you context to help each user. The name of the person you are speaking to is in the first message. Be concise",
 	persona:
-		"Warm responses. An emphasis on compassion rather than being overly professional. A response that encourages curiosity, not always just “advice” or suggestions. Please use paragraphs if the answer is long",
+		"Warm responses. An emphasis on compassion rather than being overly professional. A response that encourages curiosity, not always just “advice” or suggestions.",
 	therapeuticApproach:
 		"Specialist knowledge in Neurodiversity Narrative Therapy Informed Trauma awareness Pluralistic approach Mindfulness & use of visualisation recommendations Strengths based and Positive Psychology influences Risk assessment basic level - protocol for suicidal ideation",
 	userResults: [
@@ -45,7 +47,7 @@ const conversationPrompt: ConversationPrompt = {
 };
 
 const AIChat: React.FC = () => {
-	const [messages, setMessages] = React.useState<Message[]>([]);
+	const { user } = useUser();
 	const [input, setInput] = React.useState<string>("");
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [prompt, setPrompt] = React.useState<ConversationPrompt>({
@@ -54,6 +56,25 @@ const AIChat: React.FC = () => {
 		therapeuticApproach: "",
 		userResults: [],
 	});
+	const [messages, setMessages] = React.useState<Message[]>([
+		{
+			text: "Hello, this is Josephina your pocket therapist, ask me anything.",
+			user: false,
+		},
+	]);
+
+	useEffect(() => {
+		if (user) {
+			setMessages([
+				{
+					text: `Hello ${
+						user.given_name ? `${user.given_name},` : ""
+					} this is Josephina your pocket therapist, ask me anything.`,
+					user: false,
+				},
+			]);
+		}
+	}, [user]);
 
 	// Use the chat scroll hook
 	const { ref, scrollToBottom } = useChatScroll<HTMLDivElement>();
