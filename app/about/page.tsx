@@ -35,8 +35,8 @@ export default function About() {
 					</blockquote>
 				</div>
 				<div>
-					<div className="flex flex-row space-y-6 px-6 sm:px-0 py-12">
-						<div className="text-left text-gray-700">
+					<div className="flex flex-col md:flex-row space-y-6 md:space-y-0 px-6 sm:px-0 py-12">
+						<div className="text-left text-gray-700 md:w-2/3">
 							<h3 className="font-semibold text-lg mb-2">What’s the vision?</h3>
 							<p className="mb-4">
 								the norm is my attempt at disrupting the culture of mental
@@ -75,7 +75,7 @@ export default function About() {
 								have a good solid bat we can whack them right back.
 							</p>
 						</div>
-						<div className="flex-shrink-0 md:self-start">
+						<div className="md:w-1/3 flex justify-center md:justify-end flex-shrink-0 md:self-start">
 							<Image
 								src="/design-word.PNG"
 								width={250}
@@ -85,9 +85,8 @@ export default function About() {
 							/>
 						</div>
 					</div>
-
-					<div className="flex flex-row space-y-6 px-6 sm:px-0 py-12">
-						<div className="flex-shrink-0 md:self-start">
+					<div className="flex flex-col md:flex-row space-y-6 md:space-y-0 px-6 sm:px-0 py-12">
+						<div className="md:w-1/3 flex justify-center md:justify-start order-2 md:order-1 flex-shrink-0 md:self-start">
 							<Image
 								src="/brain-heart.jpeg"
 								width={200}
@@ -96,7 +95,7 @@ export default function About() {
 								className="rounded-3xl object-cover shadow-lg"
 							/>
 						</div>
-						<div className="text-left text-gray-700">
+						<div className="text-left text-gray-700 md:w-2/3 order-1 md:order-2">
 							<h3 className="font-semibold text-lg mb-2">
 								Do I need this in my life?
 							</h3>
