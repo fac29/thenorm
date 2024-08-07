@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/sheet";
 
 import LinkPreview from "./LinkPreview";
+import { Card } from "./ui/card";
 
 interface SheetProps {
 	selectedSegment: string | null;
@@ -178,7 +179,9 @@ const CustomSheet: React.FC<SheetProps> = ({
 										<p>Type: {resource.type}</p>
 										{resource.author && <p>Author: {resource.author}</p>}
 										{resource.url && <p>url: {resource.url}</p>} */}
-										<LinkPreview key={resource.url} url={resource.url} />
+										<Card>
+											<LinkPreview key={resource.url} url={resource.url} />
+										</Card>
 									</div>
 								);
 							}
