@@ -3,6 +3,7 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import PieChart from "@/components/PieChart";
+import TakeQuiz from "./TakeQuiz";
 
 export default async function LandingPageLoggedIn() {
 	const session = await getSession();
@@ -12,7 +13,8 @@ export default async function LandingPageLoggedIn() {
 	const existingUser = await response.json();
 	const { name } = existingUser;
 
-	const completedWheel = true;
+	let completedWheel = false;
+
 	const segmentNamesWheelCompleted = [
 		"Identify: not at all",
 		"Lifespan: somewhat",
@@ -112,6 +114,9 @@ export default async function LandingPageLoggedIn() {
 							segmentNames={segmentNamesWheelNotCompleted}
 							completedWheel={completedWheel}
 						/>
+					</div>
+					<div className="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start space-y-4">
+						<TakeQuiz />
 					</div>
 				</div>
 			)}
