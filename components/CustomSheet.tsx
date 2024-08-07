@@ -20,7 +20,7 @@ interface Resource {
 	type: string;
 	title: string;
 	author?: string;
-	url?: string;
+	url: string;
 }
 
 interface Resources {
@@ -175,10 +175,6 @@ const CustomSheet: React.FC<SheetProps> = ({
 							(resource: Resource, index) => {
 								return (
 									<div key={index}>
-										{/* <p>Title: {resource.title}</p>
-										<p>Type: {resource.type}</p>
-										{resource.author && <p>Author: {resource.author}</p>}
-										{resource.url && <p>url: {resource.url}</p>} */}
 										<Card>
 											<LinkPreview key={resource.url} url={resource.url} />
 										</Card>
