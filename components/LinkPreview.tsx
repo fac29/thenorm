@@ -46,7 +46,7 @@ const LinkPreview: React.FC<LinkPreviewProps> = ({ url }) => {
 				<img src={metadata.image} alt={metadata.title} />
 			</div>
 			<div className="link-preview-content">
-				<h3>{metadata.title}</h3>
+				<h3 className="font-bold">{metadata.title}</h3>
 				<p>{metadata.description}</p>
 			</div>
 		</a>
