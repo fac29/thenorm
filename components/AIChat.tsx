@@ -1,3 +1,4 @@
+"use client";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 import React, { useEffect } from "react";
@@ -133,6 +134,13 @@ const AIChat: React.FC = () => {
 		}
 	};
 
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === "Enter") {
+			e.preventDefault();
+			handleSend();
+		}
+	};
+
 	return (
 		<div className="flex flex-col h-[400px] md:h-[650px] max-w-md mx-auto">
 			<div
@@ -163,6 +171,7 @@ const AIChat: React.FC = () => {
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
 							setInput(e.target.value)
 						}
+						onKeyDown={handleKeyDown}
 						className="flex-1 border rounded-lg px-3 py-2"
 						placeholder="Type your message..."
 					/>
