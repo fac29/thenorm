@@ -40,6 +40,13 @@
 
     ```env
     OPENAI_API_KEY=YOUR_KEY_HERE
+    PORT=YOUR_PORT_HERE
+    OPENAI_API_KEY=YOUR_API_KEY_HERE
+    AUTH0_SECRET=YOUR_AUTH0_SECRET_HERE
+    AUTH0_BASE_URL=YOUR_AUTH0_BASE_URL
+    AUTH0_ISSUER_BASE_URL=YOUR_AUTH0_ISSUER_BASE_URL_HERE
+    AUTH0_CLIENT_ID=YOUR_AUTH0_CLIENT_ID_HERE
+    AUTH0_CLIENT_SECRET=YOUR_AUTH0_CLIENT_SECRET_HERE
     ```
 
 ## Usage
@@ -53,3 +60,5 @@ npm run dev
 ```
 
 <!-- The server will run on the port specified in the `.env` file. If no port is specified, it will default to `3000`. -->
+
+
