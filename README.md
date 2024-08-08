@@ -3,21 +3,11 @@
 #### The Norm Frontend, developed as a part of Founders and Coders Tech for Better Program.
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-blue)
-![Node.js](https://img.shields.io/badge/TS--Node-blue)
 ![Tailwind](https://img.shields.io/badge/Tailwind-blue)
 ![Next.js](https://img.shields.io/badge/JS--Next-blue)
 ![Shadcn UI](https://img.shields.io/badge/ShadcnUI-blue)
+![Auth0](https://img.shields.io/badge/Auth0-blue)
 ![License](https://img.shields.io/badge/License-MIT-blue)
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-<!-- - [API Endpoints](#api-endpoints)
-- [DB Diagram](#db-diagram)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license) -->
 
 ## Installation
 
