@@ -14,7 +14,8 @@ interface ConversationPrompt {
 	prompt: string;
 	persona: string;
 	therapeuticApproach: string;
-	userResults: string[];
+	userNormTestResults: string[];
+	userResultParagraph: string;
 }
 
 const conversationPrompt: ConversationPrompt = {
@@ -24,8 +25,7 @@ const conversationPrompt: ConversationPrompt = {
 		"Warm responses. An emphasis on compassion rather than being overly professional. A response that encourages curiosity, not always just “advice” or suggestions.",
 	therapeuticApproach:
 		"Specialist knowledge in Neurodiversity Narrative Therapy Informed Trauma awareness Pluralistic approach Mindfulness & use of visualisation recommendations Strengths based and Positive Psychology influences Risk assessment basic level - protocol for suicidal ideation",
-	userResults: [
-		"results from the norm test",
+	userNormTestResults: [
 		"Identify: not at all",
 		"Lifespan: somewhat",
 		"Community: not at all",
@@ -44,9 +44,9 @@ const conversationPrompt: ConversationPrompt = {
 		"Body: somewhat",
 		"Senses: well",
 		"Brain: not at all",
-		"result paragraph",
-		"Well done for taking some time to get to know yourself a little better. Hopefully you have a bit more of a grasp on what your own unique mental health needs are, and whattweaks you can make to reduce your stress. Your colour wheel identifies which areas you might want to focus on, with red being areas of priority. The conversationhighlighted that you feel well matched in some areas butperhaps others need some focus. You have identified some great strengths and being aware of what your senses need is one of them. You acknowledge thatyou are in a tricky situation with the demands of your job,but with some tweaks and extra support this will feel moremanageable. You identified 3 areas of focus: 1. Speak with your boss around time management. Request to block out protected admin time first thing to reduce overwhelm. 2. Priorisite swimming 3 times per week. 3. Build professional community network to reduce isolation.",
 	],
+	userResultParagraph:
+		"Well done for taking some time to get to know yourself a little better. Hopefully you have a bit more of a grasp on what your own unique mental health needs are, and whattweaks you can make to reduce your stress. Your colour wheel identifies which areas you might want to focus on, with red being areas of priority. The conversationhighlighted that you feel well matched in some areas butperhaps others need some focus. You have identified some great strengths and being aware of what your senses need is one of them. You acknowledge thatyou are in a tricky situation with the demands of your job,but with some tweaks and extra support this will feel moremanageable. You identified 3 areas of focus: 1. Speak with your boss around time management. Request to block out protected admin time first thing to reduce overwhelm. 2. Priorisite swimming 3 times per week. 3. Build professional community network to reduce isolation.",
 };
 
 const AIChat: React.FC = () => {
@@ -57,7 +57,8 @@ const AIChat: React.FC = () => {
 		prompt: "",
 		persona: "",
 		therapeuticApproach: "",
-		userResults: [],
+		userNormTestResults: [],
+		userResultParagraph: "",
 	});
 	const [messages, setMessages] = React.useState<Message[]>([
 		{
